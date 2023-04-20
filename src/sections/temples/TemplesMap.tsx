@@ -1,5 +1,8 @@
 import React, { MouseEvent, useEffect } from "react";
-import { ITemplesMapProps, ITemplesMapSelected } from "@/types/TemplesTypes";
+import {
+  ITemplesMapProps,
+  ITemplesSelectStateModel,
+} from "@/types/TemplesTypes";
 
 export default function TemplesMap({
   selected,
@@ -8,9 +11,6 @@ export default function TemplesMap({
   useEffect(() => {
     document.querySelectorAll("g").forEach((province) => {
       let { x, y, width, height } = province.getBBox();
-
-      console.log(x, y, width, height);
-
       let centeredTextLocation = {
         phayao: {
           x: x ? x + width / 2 + 5 : 0,
@@ -31,15 +31,15 @@ export default function TemplesMap({
       };
 
       let px = x
-        ? centeredTextLocation[province.id as keyof ITemplesMapSelected].x
+        ? centeredTextLocation[province.id as keyof ITemplesSelectStateModel].x
         : 0;
       let py = y
-        ? centeredTextLocation[province.id as keyof ITemplesMapSelected].y
+        ? centeredTextLocation[province.id as keyof ITemplesSelectStateModel].y
         : 0;
       let name = document.createElementNS("http://www.w3.org/2000/svg", "text");
       name.setAttribute(
         "style",
-        "text-anchor: middle; cursor: pointer; font-size: .4rem; fill: black;"
+        "text-anchor: middle; cursor: pointer; font-size: .4rem; font-weight: 300; fill: black;"
       );
       name.setAttribute("x", px.toString());
       name.setAttribute("y", py.toString());
@@ -50,10 +50,9 @@ export default function TemplesMap({
 
   const handleOnSelect = (e: MouseEvent) => {
     e.preventDefault;
-    console.log(e.currentTarget.id);
     const temp = { ...selected };
-    temp[e.currentTarget.id as keyof ITemplesMapSelected] =
-      !selected[e.currentTarget.id as keyof ITemplesMapSelected];
+    temp[e.currentTarget.id as keyof ITemplesSelectStateModel] =
+      !selected[e.currentTarget.id as keyof ITemplesSelectStateModel];
     setSelected(temp);
   };
 
@@ -97,7 +96,7 @@ export default function TemplesMap({
         <g id="prachinburi" aria-label="ปราจีนบุรี" onClick={handleOnSelect}>
           <path
             className={`${
-              selected.prachinburi ? "fill-secondary" : "fill-gray-200"
+              selected.prachinburi ? "fill-primary" : "fill-gray-200"
             } hover:cursor-pointer transition ease-in-out duration-200`}
             d="M194.73,66.5l0.67,6.38l-0.42,1.06l-1.03,1.31l-1.06,1.22l-1.24,2.03l-0.44,2.99l-0.99,1.49
 							l-1.07,0.74l-1.3,0.21l-1.43,0.44l-1.35,0.8l-1.56,1.91l-0.24,1.79l0.35,1.84l1.2,2.6l0.41,1.73l-1.24,1.64l-1.15,1.24l-1.29,1.85
@@ -129,7 +128,7 @@ export default function TemplesMap({
         <g id="ayutthaya" aria-label="พระนครศรีอยุธยา" onClick={handleOnSelect}>
           <path
             className={`${
-              selected.ayutthaya ? "fill-secondary" : "fill-gray-200"
+              selected.ayutthaya ? "fill-primary" : "fill-gray-200"
             } hover:cursor-pointer transition ease-in-out duration-200`}
             d="M62.36,123.71l-0.6,6.3l0.3,1.66l0.27,0.32l1.4,0.63l0.54,0.64l0.8,1.35l0.7,0.51l0.52,0.16
 							l0.61,0.14l0.77,0.01l0.93-0.13l1.87-0.64l0.87-0.4l0.68-0.36l2.29-1.7l0.87-0.79l0.66-0.45l0.78-0.38l0.45-0.11l1.75-0.32

@@ -1,6 +1,10 @@
-import React from 'react'
-import { ITemplesMapProps } from '@/types/TemplesTypes';
+import React from "react";
+import { ITemplesResultsProps } from "@/types/TemplesTypes";
 
-export default function TemplesResults({ selected, setSelected }: ITemplesMapProps) {
+export default function TemplesResults({
+  selected,
+  setSelected,
+  results,
+}: ITemplesResultsProps) {
   return <div>TemplesResults</div>;
 }
