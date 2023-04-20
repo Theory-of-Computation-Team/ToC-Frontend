@@ -9,27 +9,33 @@ export default function TemplesMap({
     document.querySelectorAll("g").forEach((province) => {
       let { x, y, width, height } = province.getBBox();
 
-      const centeredTextLocation = {
+      console.log(x, y, width, height);
+
+      let centeredTextLocation = {
         phayao: {
-          x: x + width / 2 + 5,
-          y: y + height / 2 + 7,
+          x: x ? x + width / 2 + 5 : 0,
+          y: y ? y + height / 2 + 7 : 0,
         },
         prachinburi: {
-          x: x + width / 2 + 5,
-          y: y + height / 2 + 3,
+          x: x ? x + width / 2 + 5 : 0,
+          y: y ? y + height / 2 + 3 : 0,
         },
         ayutthaya: {
-          x: x + width / 2 + 1,
-          y: y + height / 2 + 5,
+          x: x ? x + width / 2 + 1 : 0,
+          y: y ? y + height / 2 + 5 : 0,
         },
         pattani: {
-          x: x + width / 2 - 3,
-          y: y + height / 2 + 1,
+          x: x ? x + width / 2 - 3 : 0,
+          y: y ? y + height / 2 + 1 : 0,
         },
       };
 
-      let px = centeredTextLocation[province.id as keyof ITemplesMapSelected].x;
-      let py = centeredTextLocation[province.id as keyof ITemplesMapSelected].y;
+      let px = x
+        ? centeredTextLocation[province.id as keyof ITemplesMapSelected].x
+        : 0;
+      let py = y
+        ? centeredTextLocation[province.id as keyof ITemplesMapSelected].y
+        : 0;
       let name = document.createElementNS("http://www.w3.org/2000/svg", "text");
       name.setAttribute(
         "style",
@@ -42,11 +48,6 @@ export default function TemplesMap({
     });
   }, []);
 
-  useEffect(() => {
-    
-  }, [selected])
-  
-
   const handleOnSelect = (e: MouseEvent) => {
     e.preventDefault;
     console.log(e.currentTarget.id);
@@ -58,7 +59,7 @@ export default function TemplesMap({
 
   return (
     <div className="flex flex-col items-center">
-      <svg className="h-[30rem] w-[30rem]" id="map" viewBox="0 0 200 200"> 
+      <svg className="h-[30rem] w-[30rem]" id="map" viewBox="0 0 200 200">
         <g id="phayao" aria-label="พะเยา" onClick={handleOnSelect}>
           <path
             className={`${

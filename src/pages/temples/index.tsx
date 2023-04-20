@@ -17,7 +17,7 @@ export default function Temples() {
         <title>Temples Search | รายชื่อวัด</title>
       </Head>
 
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center pt-16">
         <TemplesHeader />
         <TemplesMap selected={selected} setSelected={setSelected} />
         <TemplesResults selected={selected} setSelected={setSelected} />
