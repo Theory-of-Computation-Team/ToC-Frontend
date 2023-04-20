@@ -4,7 +4,7 @@ import TextDetail from "@/sections/home/TextDetail";
 
 const HomeTemple = () => {
   return (
-    <div className="">
+    <div className="container mx-auto px-8">
       {TextDetail.map((item, index) => (
         <div key={index}>
           <HomeSection
