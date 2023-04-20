@@ -1,85 +1,102 @@
-import React, { MouseEvent, useEffect, useState } from "react";
-import { ITempleMapSelected } from "@/types/TemplesTypes";
+import React, { MouseEvent, useEffect } from "react";
+import { ITemplesMapProps, ITemplesMapSelected } from "@/types/TemplesTypes";
 
-export default function TemplesMap() {
+export default function TemplesMap({
+  selected,
+  setSelected,
+}: ITemplesMapProps) {
   useEffect(() => {
-    const setUpText = document.querySelectorAll("path").forEach((province) => {
+    document.querySelectorAll("g").forEach((province) => {
       let { x, y, width, height } = province.getBBox();
-      let px = x + width / 2;
-      let py = y + height / 2;
+
+      const centeredTextLocation = {
+        phayao: {
+          x: x + width / 2 + 5,
+          y: y + height / 2 + 7,
+        },
+        prachinburi: {
+          x: x + width / 2 + 5,
+          y: y + height / 2 + 3,
+        },
+        ayutthaya: {
+          x: x + width / 2 + 1,
+          y: y + height / 2 + 5,
+        },
+        pattani: {
+          x: x + width / 2 - 3,
+          y: y + height / 2 + 1,
+        },
+      };
+
+      let px = centeredTextLocation[province.id as keyof ITemplesMapSelected].x;
+      let py = centeredTextLocation[province.id as keyof ITemplesMapSelected].y;
       let name = document.createElementNS("http://www.w3.org/2000/svg", "text");
       name.setAttribute(
         "style",
-        "text-anchor: middle; cursor: pointer; font-size: .25rem; font-weight: 200;"
+        "text-anchor: middle; cursor: pointer; font-size: .4rem; fill: black;"
       );
       name.setAttribute("x", px.toString());
-      name.setAttribute("y", (py).toString());
+      name.setAttribute("y", py.toString());
       name.innerHTML = province.ariaLabel ? province.ariaLabel : "Select";
-      province.parentNode?.append(name);
+      province.append(name);
     });
   }, []);
 
-  const [selected, setSelected] = useState<ITempleMapSelected>({
-    Phayao: true,
-    Prachinburi: true,
-    Ayutthaya: true,
-    Pattani: true,
-  });
+  useEffect(() => {
+    
+  }, [selected])
+  
 
-  const handleOnSelect = (e: MouseEvent<SVGPathElement>) => {
+  const handleOnSelect = (e: MouseEvent) => {
+    e.preventDefault;
+    console.log(e.currentTarget.id);
     const temp = { ...selected };
-    temp[e.currentTarget.id as keyof ITempleMapSelected] =
-      !selected[e.currentTarget.id as keyof ITempleMapSelected];
+    temp[e.currentTarget.id as keyof ITemplesMapSelected] =
+      !selected[e.currentTarget.id as keyof ITemplesMapSelected];
     setSelected(temp);
   };
 
   return (
-    <div className="text-lg">
-      <svg id="map" x="0px" y="0px" viewBox="0 0 600 600">
-        <g>
+    <div className="flex flex-col items-center">
+      <svg className="h-[30rem] w-[30rem]" id="map" viewBox="0 0 200 200"> 
+        <g id="phayao" aria-label="พะเยา" onClick={handleOnSelect}>
           <path
-            id="Phayao"
-            aria-label="พะเยา"
-            onClick={handleOnSelect}
             className={`${
-              selected.Phayao ? "fill-secondary" : "fill-gray-200"
+              selected.phayao ? "fill-primary" : "fill-gray-200"
             } hover:cursor-pointer transition ease-in-out duration-200`}
             d="M99.49,27.44l1.48,1.38l0.79,0.87l0.36,0.68l0,0.39l-0.78,0.76l-0.43,0.2l-0.55,0.52l-0.53,0.61
-							l-0.21,0.72l-0.17,0.91l-0.29,1.99l-0.49,1.56l-2.34,3.06l-0.41,0.68l0.04,0.57l0.04,0.57l0.6,1.68l0.22,0.52l0.81,0.96l1.12,1.08
-							l0.34,0.21l0.72,0.21l0.72,0.21l0.95-0.04l0.45-0.11l0.32-0.27l0.21-0.34l0.3-0.75l0.25-0.16l0.45-0.11l0.41,0.09l0.32,0.12
-							l0.81,0.96l0.32,0.12l0.5,0.07l0.8-0.29l0.48-0.02l0.32,0.12l0.34,0.21l0.52,0.55l0.31,0.89l0.05,1.43l0.28,1.95l0.05,4.61
-							l0.22,0.52l0.36,0.68l0.74,1.07l1.06,1.19l0.27,0.32l0.31,0.89l0.31,0.89l0.17,1.5l0.11,0.45l0.18,0.34l0.81,0.96l0.2,0.43
-							l0.44,1.43l0.38,0.78l0.34,0.21l1.06,0.42l0.25,0.23l0.06,0.66l-0.44,0.97l-1.2,1.83l-0.69,0.74l-0.55,0.52l-0.75,0.47l-1.1,0.65
-							l-0.8,0.29l-0.39,0.38l-0.46,0.49l-0.36,1.72l-0.17,0.91l-0.03,0.68l0.38,0.78l0.52,0.55l2.14,1.7l0.18,0.34l-0.12,0.32l-0.57,0.43
-							l-0.55,0.13l-0.48,0.02l-0.82-0.19l-1.06-0.42l-2.31-0.79l-0.79-0.1l-0.88-0.08l-0.84,0.11l-0.66,0.06l-0.98,0.33l-0.45,0.11
-							L101.66,83l-0.28,0.84l-0.26,1.31l-0.32,3.06l0.26,1.09l0.33,0.59l1.55-0.37l0.93-0.13l0.48-0.02l0.82,0.19l0.68,0.41l0.18,0.34
-							l0.31,0.89l-0.03,0.68l-0.25,0.54l-0.57,0.81l-1.42,1.69l-0.8,0.67l-0.75,0.47l-2.48,0.5l-0.78,0.38l-0.32,0.27l-0.53,0.61
-							l-3.73,12.54l-0.19,3.22l-12.41,2.02l-2.78,1.24l-1,0.24l-0.86,0.01l-0.82-0.19l-2.56-0.25l-0.75,0.08l-0.43,0.2l-0.71,0.65
-							l-1.46,0.74l-0.25,0.16l-1.26,1.55l-2.87-0.75l-1.27,0.31l-0.59,0.33l-0.48,0.02l-0.34-0.21l-0.38-0.78l-0.29-0.8l-0.03-1.34
-							l-0.17-0.73l-0.58-0.82l-1.48-1.38l-1.9-1.08l-1.27-0.47l-1.02-0.24l-6.13-1.9l-1.83-0.81l-0.36-0.3l-0.72-0.98l-0.6-0.91
-							l-0.43-0.57l-0.99-0.92l-0.49-0.46l-0.54-0.25l-0.79-0.1l-1.11,0.17l-0.91,0.22l-0.57,0.04l-0.77-0.01l-1.83-0.43l-0.48,0.02
-							l-0.36,0.09l-0.78,0.38l-0.64,0.15l-0.66,0.06l-1.16-0.01l-0.79-0.1l-0.4-0.48l-0.09-0.36l-0.11-0.84l0-0.39l-0.2-0.43l-0.29-0.41
-							l-2.5-2.38l-0.52-0.16l-0.48,0.02l-0.64,0.15l-0.86,0.01l-1.29-0.17l-0.72-0.21l-0.47-0.37l-0.52-0.55l-1.01-1.39l-1.23-2.3
-							l-0.11-0.45l-0.43-0.57l-0.47-0.75l-3.87-3.69l-0.45-0.66l-0.33-0.59l-0.22-0.52l-0.38-0.78l-1.26-1.62l-0.65-1.1l-1.08-1.28
-							l-0.45-0.66l-0.69-1.66l-0.62-1.78l-1.21-3.85l-0.15-1.02l-0.02-0.48l0-0.39l0.4-1.15l-0.15-0.64l-0.47-0.75L8.44,69.4l-0.47-0.75
-							l-0.27-0.71l-0.15-1.41l-0.18-0.34l-1.9-3.49l-0.88-2.87l2.03-0.78l1.24-1.26l1.19-1.44l0.71-0.65l0.57-0.43l17.09-7.37l0.72,0.21
-							l0.61,0.53l0.47,0.75l0.22,0.91l-0.18,4.47l0.13,0.93l0.24,1l0.4,0.87l0.47,0.37l0.72,0.21l1.52,0.31l0.77,0.01l0.64-0.15l0.66-0.45
-							l0.66-0.45l0.96-1.19l2.86-4.53l0.48-0.4l0.75-0.47l1.62-0.87l0.89-0.31l0.64-0.15l0.39,0l1.22,0.28l1.36,0.06l0.55-0.13l0.43-0.2
-							l0.21-0.34l0.03-0.68l-0.28-1.18l0.16-0.52l0.46-0.49l3.93-2.87l0.37-0.47l0.12-0.7l-0.11-0.84l-0.46-1.52l0.07-0.5l0.46-0.88
-							l0.67-1.22l0.03-0.68l-0.09-0.36l-0.36-0.68l-0.09-0.36l0.14-0.61l0.46-0.49l0.23-0.63l0.12-0.7l-0.18-0.34l-0.56-1.12l-0.09-0.36
-							l0.01-0.77l0.14-0.61l0.34-2.58l0.24-1.02l0.41-0.68l2.36-2.59l0.71-0.65l0.57-0.43l0.45-0.11l2.68-0.45l1.07-0.35l0.5-0.31
-							l0.3-0.36l0.33-1.04l0.16-0.52l0.67-0.83l0.55-0.52l0.52-0.22l2.89-1.18l0.75-0.47l0.48-0.4l0.64-0.92l2.94-5.8l0.64-0.92l1.44,1.19
-							l1.15,1.17l0.71,1.75l1.19,3.76l1.21,1.83l1.17,1.26l2.95,2.27l1.26,1.24l0.84,1.91l0.44,1.82l0.69,1.66l1.71,1.13l2.19,0.72
-							l3.51,0.6l3.33,0.26l1.87-0.64L99.49,27.44L99.49,27.44z"
+              l-0.21,0.72l-0.17,0.91l-0.29,1.99l-0.49,1.56l-2.34,3.06l-0.41,0.68l0.04,0.57l0.04,0.57l0.6,1.68l0.22,0.52l0.81,0.96l1.12,1.08
+              l0.34,0.21l0.72,0.21l0.72,0.21l0.95-0.04l0.45-0.11l0.32-0.27l0.21-0.34l0.3-0.75l0.25-0.16l0.45-0.11l0.41,0.09l0.32,0.12
+              l0.81,0.96l0.32,0.12l0.5,0.07l0.8-0.29l0.48-0.02l0.32,0.12l0.34,0.21l0.52,0.55l0.31,0.89l0.05,1.43l0.28,1.95l0.05,4.61
+              l0.22,0.52l0.36,0.68l0.74,1.07l1.06,1.19l0.27,0.32l0.31,0.89l0.31,0.89l0.17,1.5l0.11,0.45l0.18,0.34l0.81,0.96l0.2,0.43
+              l0.44,1.43l0.38,0.78l0.34,0.21l1.06,0.42l0.25,0.23l0.06,0.66l-0.44,0.97l-1.2,1.83l-0.69,0.74l-0.55,0.52l-0.75,0.47l-1.1,0.65
+              l-0.8,0.29l-0.39,0.38l-0.46,0.49l-0.36,1.72l-0.17,0.91l-0.03,0.68l0.38,0.78l0.52,0.55l2.14,1.7l0.18,0.34l-0.12,0.32l-0.57,0.43
+              l-0.55,0.13l-0.48,0.02l-0.82-0.19l-1.06-0.42l-2.31-0.79l-0.79-0.1l-0.88-0.08l-0.84,0.11l-0.66,0.06l-0.98,0.33l-0.45,0.11
+              L101.66,83l-0.28,0.84l-0.26,1.31l-0.32,3.06l0.26,1.09l0.33,0.59l1.55-0.37l0.93-0.13l0.48-0.02l0.82,0.19l0.68,0.41l0.18,0.34
+              l0.31,0.89l-0.03,0.68l-0.25,0.54l-0.57,0.81l-1.42,1.69l-0.8,0.67l-0.75,0.47l-2.48,0.5l-0.78,0.38l-0.32,0.27l-0.53,0.61
+              l-3.73,12.54l-0.19,3.22l-12.41,2.02l-2.78,1.24l-1,0.24l-0.86,0.01l-0.82-0.19l-2.56-0.25l-0.75,0.08l-0.43,0.2l-0.71,0.65
+              l-1.46,0.74l-0.25,0.16l-1.26,1.55l-2.87-0.75l-1.27,0.31l-0.59,0.33l-0.48,0.02l-0.34-0.21l-0.38-0.78l-0.29-0.8l-0.03-1.34
+              l-0.17-0.73l-0.58-0.82l-1.48-1.38l-1.9-1.08l-1.27-0.47l-1.02-0.24l-6.13-1.9l-1.83-0.81l-0.36-0.3l-0.72-0.98l-0.6-0.91
+              l-0.43-0.57l-0.99-0.92l-0.49-0.46l-0.54-0.25l-0.79-0.1l-1.11,0.17l-0.91,0.22l-0.57,0.04l-0.77-0.01l-1.83-0.43l-0.48,0.02
+              l-0.36,0.09l-0.78,0.38l-0.64,0.15l-0.66,0.06l-1.16-0.01l-0.79-0.1l-0.4-0.48l-0.09-0.36l-0.11-0.84l0-0.39l-0.2-0.43l-0.29-0.41
+              l-2.5-2.38l-0.52-0.16l-0.48,0.02l-0.64,0.15l-0.86,0.01l-1.29-0.17l-0.72-0.21l-0.47-0.37l-0.52-0.55l-1.01-1.39l-1.23-2.3
+              l-0.11-0.45l-0.43-0.57l-0.47-0.75l-3.87-3.69l-0.45-0.66l-0.33-0.59l-0.22-0.52l-0.38-0.78l-1.26-1.62l-0.65-1.1l-1.08-1.28
+              l-0.45-0.66l-0.69-1.66l-0.62-1.78l-1.21-3.85l-0.15-1.02l-0.02-0.48l0-0.39l0.4-1.15l-0.15-0.64l-0.47-0.75L8.44,69.4l-0.47-0.75
+              l-0.27-0.71l-0.15-1.41l-0.18-0.34l-1.9-3.49l-0.88-2.87l2.03-0.78l1.24-1.26l1.19-1.44l0.71-0.65l0.57-0.43l17.09-7.37l0.72,0.21
+              l0.61,0.53l0.47,0.75l0.22,0.91l-0.18,4.47l0.13,0.93l0.24,1l0.4,0.87l0.47,0.37l0.72,0.21l1.52,0.31l0.77,0.01l0.64-0.15l0.66-0.45
+              l0.66-0.45l0.96-1.19l2.86-4.53l0.48-0.4l0.75-0.47l1.62-0.87l0.89-0.31l0.64-0.15l0.39,0l1.22,0.28l1.36,0.06l0.55-0.13l0.43-0.2
+              l0.21-0.34l0.03-0.68l-0.28-1.18l0.16-0.52l0.46-0.49l3.93-2.87l0.37-0.47l0.12-0.7l-0.11-0.84l-0.46-1.52l0.07-0.5l0.46-0.88
+              l0.67-1.22l0.03-0.68l-0.09-0.36l-0.36-0.68l-0.09-0.36l0.14-0.61l0.46-0.49l0.23-0.63l0.12-0.7l-0.18-0.34l-0.56-1.12l-0.09-0.36
+              l0.01-0.77l0.14-0.61l0.34-2.58l0.24-1.02l0.41-0.68l2.36-2.59l0.71-0.65l0.57-0.43l0.45-0.11l2.68-0.45l1.07-0.35l0.5-0.31
+              l0.3-0.36l0.33-1.04l0.16-0.52l0.67-0.83l0.55-0.52l0.52-0.22l2.89-1.18l0.75-0.47l0.48-0.4l0.64-0.92l2.94-5.8l0.64-0.92l1.44,1.19
+              l1.15,1.17l0.71,1.75l1.19,3.76l1.21,1.83l1.17,1.26l2.95,2.27l1.26,1.24l0.84,1.91l0.44,1.82l0.69,1.66l1.71,1.13l2.19,0.72
+              l3.51,0.6l3.33,0.26l1.87-0.64L99.49,27.44L99.49,27.44z"
           />
         </g>
-        <g>
+        <g id="prachinburi" aria-label="ปราจีนบุรี" onClick={handleOnSelect}>
           <path
-            id="Prachinburi"
-            aria-label="ปราจีนบุรี"
-            onClick={handleOnSelect}
             className={`${
-              selected.Prachinburi ? "fill-secondary" : "fill-gray-200"
+              selected.prachinburi ? "fill-secondary" : "fill-gray-200"
             } hover:cursor-pointer transition ease-in-out duration-200`}
             d="M194.73,66.5l0.67,6.38l-0.42,1.06l-1.03,1.31l-1.06,1.22l-1.24,2.03l-0.44,2.99l-0.99,1.49
 							l-1.07,0.74l-1.3,0.21l-1.43,0.44l-1.35,0.8l-1.56,1.91l-0.24,1.79l0.35,1.84l1.2,2.6l0.41,1.73l-1.24,1.64l-1.15,1.24l-1.29,1.85
@@ -108,13 +125,10 @@ export default function TemplesMap() {
 							l0.83,0.67l0.52,0.55l0.4,0.87l0.49,0.46l0.84,0.28l1.15,0.78l2.08,1.04l2.29,0.7l1.31,0.65l1.45,0.42L194.73,66.5L194.73,66.5z"
           />
         </g>
-        <g>
+        <g id="ayutthaya" aria-label="พระนครศรีอยุธยา" onClick={handleOnSelect}>
           <path
-            id="Ayutthaya"
-            aria-label="พระนครศรีอยุธยา"
-            onClick={handleOnSelect}
             className={`${
-              selected.Ayutthaya ? "fill-secondary" : "fill-gray-200"
+              selected.ayutthaya ? "fill-secondary" : "fill-gray-200"
             } hover:cursor-pointer transition ease-in-out duration-200`}
             d="M62.36,123.71l-0.6,6.3l0.3,1.66l0.27,0.32l1.4,0.63l0.54,0.64l0.8,1.35l0.7,0.51l0.52,0.16
 							l0.61,0.14l0.77,0.01l0.93-0.13l1.87-0.64l0.87-0.4l0.68-0.36l2.29-1.7l0.87-0.79l0.66-0.45l0.78-0.38l0.45-0.11l1.75-0.32
@@ -132,13 +146,10 @@ export default function TemplesMap() {
 							l1.75-0.32l0.61,0.14l0.47,0.37l0.88,0.46l0.7,0.12L62.36,123.71L62.36,123.71z"
           />
         </g>
-        <g>
+        <g id="pattani" aria-label="ปัตตานี" onClick={handleOnSelect}>
           <path
-            id="Pattani"
-            aria-label="ปัตตานี"
-            onClick={handleOnSelect}
             className={`${
-              selected.Pattani ? "fill-secondary" : "fill-gray-200"
+              selected.pattani ? "fill-primary" : "fill-gray-200"
             } hover:cursor-pointer transition ease-in-out duration-200`}
             d="M180.57,157.45l-0.23,0.25l-3.48,0.74l-0.57,0.04l-0.7-0.12l-1.01-1.01l-0.59-0.44l-0.38-0.78
 							l-0.42-1.34l-0.25-0.23l-0.27-0.32l-0.41-0.09l-0.77-0.01l-0.39,0l-0.59-0.44l-0.41-0.09l-1.23,0.87l-1.09-0.12l-0.45,0.11
