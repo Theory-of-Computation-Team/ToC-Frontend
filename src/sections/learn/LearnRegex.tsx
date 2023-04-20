@@ -6,7 +6,7 @@ const LearnRegex = () => {
       <div className="container mx-auto flex flex-col items-center px-8 py-8 md:py-12 gap-4">
         <a className="inline-block group font-bold text-xl md:text-2xl xl:text-4xl tracking-wide transition-all duration-300 ease-in-out">
           หลักการ Regular Expression
-          <span className="block my-2 h-1 w-[80%] group-hover:w-full transition-all duration-500 ease-out bg-primary"></span>
+          <span className="block my-2 h-1 w-[30%] group-hover:w-full transition-all duration-500 ease-out bg-primary"></span>
         </a>
       </div>
     </div>
