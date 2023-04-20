@@ -1,3 +1,4 @@
+import SearchBar from "@/commons/components/SearchBar";
 import React from "react";
 
 const LearnRegex = () => {
@@ -8,6 +9,8 @@ const LearnRegex = () => {
           หลักการ Regular Expression
           <span className="block my-2 h-1 w-[30%] group-hover:w-full transition-all duration-500 ease-out bg-primary"></span>
         </a>
+
+        {/* <SearchBar /> */}
       </div>
     </div>
   );
