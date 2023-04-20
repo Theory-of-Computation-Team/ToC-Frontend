@@ -8,9 +8,13 @@ export default function TemplesHeader() {
         รายชื่อวัด
         <span className="absolute left-0 -bottom-5 my-2 h-1 w-[30%] group-hover:w-full transition-all duration-500 ease-out bg-primary"></span>
       </h1>
-      <div className="flex items-center border-[.5px] border-black rounded-full py-2 px-4 w-80">
-        <BiSearch />
-        <input placeholder="ค้นหารายชื่อวัด..." className="" />
+      <div className="relative flex items-center justify-between w-[200px] md:w-[350px]">
+        <input
+          type="text"
+          placeholder="ค้นหารายชื่อวัด..."
+          className="w-full py-3 px-4 sm:text-sm md:text-lg border-[.5px] border-black rounded-full focus:border-secondary focus:ring-secondary focus:outline-none "
+        />
+        <BiSearch className="absolute inset-y-0 right-0 w-6 h-6 mx-4 my-auto text-[#999999] active:text-secondary" />
       </div>
     </div>
   );
