@@ -15,7 +15,7 @@ function Navbar() {
     setMenuOpen(!menuOpen);
   };
   return (
-    <div className="fixed w-full h-16 drop-shadow-sm border-b-1 border-[#D9D9D9]">
+    <div className="fixed z-20 w-full h-16 bg-white drop-shadow-sm border-b-1 border-[#D9D9D9]">
       <div className="flex justify-between items-center w-full h-full">
         <div className="flex items-center justify-center px-6 space-x-6">
           <div className="w-6 h-6 md:w-8 md:h-8">
@@ -28,22 +28,22 @@ function Navbar() {
           </div>
           <div className="hidden sm:flex items-center justify-center px-6 space-x-6">
             <Link
-              href="/about#about-objective"
-              className="text-graycolor capitalize hover:text-primary"
+              href="/"
+              className="text-graycolor capitalize group hover:border-b-2 border-secondary"
               replace
             >
               หน้าหลัก
             </Link>
             <Link
-              href="/about#about-story"
-              className="capitalize hover:text-primary"
+              href="/temples"
+              className="text-graycolor capitalize group hover:border-b-2 border-secondary"
               replace
             >
               รายชื่อวัด
             </Link>
             <Link
-              href="/about#area-focus"
-              className="capitalize hover:text-primary"
+              href="/learn"
+              className="text-graycolor capitalize group hover:border-b-2 border-secondary"
               replace
             >
               หลักการ Regular Expression
@@ -54,14 +54,14 @@ function Navbar() {
           <a
             href="https://github.com/Theory-of-Computation-Team"
             target="_blank"
-            className="text-lg text-disabled cursor-pointer hover:text-primary"
+            className="text-lg cursor-pointer hover:text-secondary"
             rel="noreferrer"
           >
             <BsGithub />
           </a>
           <Link
-            href="/about#area-focus"
-            className="text-[#999999] text-center hover:text-primary"
+            href="/search"
+            className="text-graycolor text-center hover:text-secondary"
             replace
           >
             <BiSearch />
@@ -74,16 +74,16 @@ function Navbar() {
           <RxHamburgerMenu />
         </div>
 
-        {/* mobile */}
+        {/* mobile navbar*/}
         <div
           className={
             menuOpen
               ? "fixed left-0 top-0 w-[65%] sm:hidden h-screen p-10 ease-in duration-500 bg-[#D9D9D9]"
-              : "fixed left-[-100%] top-0 p-10 ease-in duration-500"
+              : "fixed left-[-100%] h-screen top-0 p-10 hover:ease-in duration-500"
           }
         >
           <div className="flex w-full justify-end items-center">
-            <div onClick={handleNav} className="cursor-pointer">
+            <div onClick={handleNav} className="cursor-pointer sm:hidden">
               <RiCloseFill size={20} className="text-graycolor" />
             </div>
           </div>
