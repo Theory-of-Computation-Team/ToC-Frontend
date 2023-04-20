@@ -13,17 +13,17 @@ export default function TemplesMap() {
         "text-anchor: middle; cursor: pointer; font-size: .25rem; font-weight: 200;"
       );
       name.setAttribute("x", px.toString());
-      name.setAttribute("y", (py + 3).toString());
+      name.setAttribute("y", (py).toString());
       name.innerHTML = province.ariaLabel ? province.ariaLabel : "Select";
       province.parentNode?.append(name);
     });
   }, []);
 
   const [selected, setSelected] = useState<ITempleMapSelected>({
-    Phayao: false,
-    Prachinburi: false,
-    Ayutthaya: false,
-    Pattani: false,
+    Phayao: true,
+    Prachinburi: true,
+    Ayutthaya: true,
+    Pattani: true,
   });
 
   const handleOnSelect = (e: MouseEvent<SVGPathElement>) => {
