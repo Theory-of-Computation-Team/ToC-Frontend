@@ -6,10 +6,10 @@ const HomeHeader = () => {
     <div id="home-header" className="w-full py-6 md:py-16 md:px-32">
       <div className="container mx-auto flex flex-col md:flex-row md:justify-around px-8 py-8 md:py-12 gap-4">
         <div className="relative flex justify-center shrink-0 overflow-hidden px-2 py-8">
-          <div className="absolute top-0 left-0 z-0 w-60 md:w-[300px] lg:w-[350px] 2xl:w-[450px]">
+          <div className="absolute flex justify-center items-center inset-0 top-0 left-0 z-0 w-60 md:w-[300px] lg:w-[350px] 2xl:w-[450px] ">
             <Image
               src="/assets/images/circle.png"
-              alt="hero"
+              alt="circle"
               width={512}
               height={512}
             />
@@ -17,7 +17,7 @@ const HomeHeader = () => {
           <div className="relative z-10">
             <Image
               src="/assets/images/home.png"
-              alt="hero"
+              alt="home-header"
               className="w-60 md:w-[300px] lg:w-[350px] 2xl:w-[450px]"
               width={512}
               height={512}
