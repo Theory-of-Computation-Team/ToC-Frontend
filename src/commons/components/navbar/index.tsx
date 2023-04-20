@@ -88,10 +88,10 @@ function Navbar() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-center py-6 space-y-6 text-xs">
+          <div className="flex flex-col justify-center py-6 space-y-12 text-xs">
             <Link
               href="/"
-              className="flex gap-2 text-sm items-center text-graycolor capitalize hover:text-secondary"
+              className="flex gap-4 text-base items-center text-graycolor capitalize hover:text-secondary"
               replace
             >
               <BiHomeAlt />
@@ -99,7 +99,7 @@ function Navbar() {
             </Link>
             <Link
               href="/temples"
-              className="flex gap-2 text-sm items-center text-graycolor capitalize hover:text-secondary"
+              className="flex gap-4 text-base items-center text-graycolor capitalize hover:text-secondary"
               replace
             >
               <GiGreekTemple />
@@ -107,7 +107,7 @@ function Navbar() {
             </Link>
             <Link
               href="/learn"
-              className="flex gap-2 text-sm text-graycolor capitalize hover:text-secondary"
+              className="flex gap-4 text-base text-graycolor capitalize hover:text-secondary"
               replace
             >
               <GrDocumentPdf />
@@ -116,7 +116,7 @@ function Navbar() {
             <a
               href="https://github.com/Theory-of-Computation-Team"
               target="_blank"
-              className="flex gap-2 text-sm items-center text-graycolor capitalize hover:text-secondary"
+              className="flex gap-4 text-base items-center text-graycolor capitalize hover:text-secondary"
               rel="noreferrer"
             >
               <BsGithub />
