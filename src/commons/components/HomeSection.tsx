@@ -23,13 +23,13 @@ const HomeSection = ({
     >
       <div className="flex flex-col justify-center gap-6 md:gap-10 md:w-[450px]">
         <div className="space-y-6">
-          <a className="inline-block group font-bold text-xl md:text-2xl xl:text-4xl tracking-wide transition-all duration-300 ease-in-out">
+          <h1 className="inline-block group font-bold text-xl md:text-2xl xl:text-4xl tracking-wide transition-all duration-300 ease-in-out">
             {header}
             <span
               style={{ backgroundColor: color }}
               className="block my-2 h-1 w-[50%] group-hover:w-full transition-all duration-500 ease-out"
             ></span>
-          </a>
+          </h1>
 
           <p className="font-normal text-base md:text-lg xl:text-xl tracking-wide line-clamp-3 md:line-clamp-none">
             {detail}
