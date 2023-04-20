@@ -1,42 +1,50 @@
 import * as React from "react";
-import Image from "next/image";
 import Link from "next/link";
+import { BiSearch } from "react-icons/bi";
+import { BiLogIn } from "react-icons/bi";
 
-const Navbar = () => {
+function Navbar() {
   return (
     <div className="fixed w-full bg-blue-300">
       <div className="flex space-x-4">
         <Link
           href="/about#about-objective"
-          className="text-[#999999] capitalize hover:text-primary"
+          className="text-graycolor capitalize hover:text-primary"
           replace
         >
           หน้าหลัก
         </Link>
         <Link
           href="/about#about-story"
-          className="text-[#999999] capitalize hover:text-primary"
+          className="capitalize hover:text-primary"
           replace
         >
           รายชื่อวัด
         </Link>
         <Link
           href="/about#area-focus"
-          className="text-[#999999] capitalize hover:text-primary"
+          className="capitalize hover:text-primary"
           replace
         >
           หลักการ Regular Expression
         </Link>
         <Link
           href="/about#area-focus"
-          className="text-[#999999] capitalize hover:text-primary"
+          className=" capitalize hover:text-primary"
           replace
         >
           หลักการ Regular Expression
         </Link>
+        <Link
+          href="/about#area-focus"
+          className="text-[#999999] text-center hover:text-primary"
+          replace
+        >
+          <BiSearch />
+        </Link>
       </div>
     </div>
   );
-};
+}
 
 export default Navbar;
