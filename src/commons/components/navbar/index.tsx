@@ -54,14 +54,14 @@ function Navbar() {
           <a
             href="https://github.com/Theory-of-Computation-Team"
             target="_blank"
-            className="text-lg cursor-pointer hover:text-secondary"
+            className="text-center cursor-pointer hover:text-secondary"
             rel="noreferrer"
           >
             <BsGithub />
           </a>
           <Link
             href="/search"
-            className="text-graycolor text-center hover:text-secondary"
+            className="text-center cursor-pointer hover:text-secondary"
             replace
           >
             <BiSearch />
@@ -90,7 +90,7 @@ function Navbar() {
 
           <div className="flex flex-col justify-center py-6 space-y-6 text-xs">
             <Link
-              href="/home"
+              href="/"
               className="flex gap-2 text-sm items-center text-graycolor capitalize hover:text-secondary"
               replace
             >
