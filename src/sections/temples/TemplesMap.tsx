@@ -1,13 +1,14 @@
 import React, { MouseEvent, useEffect } from "react";
 import {
-  ITemplesMapProps,
+  IPathProps,
+  ITemplesSelectStateProps,
   ITemplesSelectStateModel,
 } from "@/types/TemplesTypes";
 
 export default function TemplesMap({
   selected,
   setSelected,
-}: ITemplesMapProps) {
+}: ITemplesSelectStateProps) {
   useEffect(() => {
     document.querySelectorAll("g").forEach((province) => {
       let { x, y, width, height } = province.getBBox();
@@ -59,12 +60,12 @@ export default function TemplesMap({
   return (
     <div className="flex flex-col items-center">
       <svg className="h-[30rem] w-[30rem]" id="map" viewBox="0 0 200 200">
-        <g id="phayao" aria-label="พะเยา" onClick={handleOnSelect}>
-          <path
-            className={`${
-              selected.phayao ? "fill-primary" : "fill-gray-200"
-            } hover:cursor-pointer transition ease-in-out duration-200`}
-            d="M99.49,27.44l1.48,1.38l0.79,0.87l0.36,0.68l0,0.39l-0.78,0.76l-0.43,0.2l-0.55,0.52l-0.53,0.61
+        <Path
+          id="phayao"
+          label="พะเยา"
+          onclick={handleOnSelect}
+          selected={selected}
+          draw="M99.49,27.44l1.48,1.38l0.79,0.87l0.36,0.68l0,0.39l-0.78,0.76l-0.43,0.2l-0.55,0.52l-0.53,0.61
               l-0.21,0.72l-0.17,0.91l-0.29,1.99l-0.49,1.56l-2.34,3.06l-0.41,0.68l0.04,0.57l0.04,0.57l0.6,1.68l0.22,0.52l0.81,0.96l1.12,1.08
               l0.34,0.21l0.72,0.21l0.72,0.21l0.95-0.04l0.45-0.11l0.32-0.27l0.21-0.34l0.3-0.75l0.25-0.16l0.45-0.11l0.41,0.09l0.32,0.12
               l0.81,0.96l0.32,0.12l0.5,0.07l0.8-0.29l0.48-0.02l0.32,0.12l0.34,0.21l0.52,0.55l0.31,0.89l0.05,1.43l0.28,1.95l0.05,4.61
@@ -91,14 +92,13 @@ export default function TemplesMap({
               l0.3-0.36l0.33-1.04l0.16-0.52l0.67-0.83l0.55-0.52l0.52-0.22l2.89-1.18l0.75-0.47l0.48-0.4l0.64-0.92l2.94-5.8l0.64-0.92l1.44,1.19
               l1.15,1.17l0.71,1.75l1.19,3.76l1.21,1.83l1.17,1.26l2.95,2.27l1.26,1.24l0.84,1.91l0.44,1.82l0.69,1.66l1.71,1.13l2.19,0.72
               l3.51,0.6l3.33,0.26l1.87-0.64L99.49,27.44L99.49,27.44z"
-          />
-        </g>
-        <g id="prachinburi" aria-label="ปราจีนบุรี" onClick={handleOnSelect}>
-          <path
-            className={`${
-              selected.prachinburi ? "fill-primary" : "fill-gray-200"
-            } hover:cursor-pointer transition ease-in-out duration-200`}
-            d="M194.73,66.5l0.67,6.38l-0.42,1.06l-1.03,1.31l-1.06,1.22l-1.24,2.03l-0.44,2.99l-0.99,1.49
+        />
+        <Path
+          id="prachinburi"
+          label="ปราจีนบุรี"
+          onclick={handleOnSelect}
+          selected={selected}
+          draw="M194.73,66.5l0.67,6.38l-0.42,1.06l-1.03,1.31l-1.06,1.22l-1.24,2.03l-0.44,2.99l-0.99,1.49
 							l-1.07,0.74l-1.3,0.21l-1.43,0.44l-1.35,0.8l-1.56,1.91l-0.24,1.79l0.35,1.84l1.2,2.6l0.41,1.73l-1.24,1.64l-1.15,1.24l-1.29,1.85
 							l-0.24,1.79l0.39,1.64l0.4,1.25l0.41,1.73l0.01,1.63l-0.36,1.72l0.44,1.43l1.06,0.8l3.29,0.08l1.31,0.26l0.65,0.71l0.59,2.46
 							l0.66,1.96l0.01,1.63l-0.65,1.7l-1.57,2.69l-1.71,0.51l-2.51,1.18l-0.89,0.31l-0.59-0.05l-0.63-0.23l-1.2-0.58l-0.47-0.37
@@ -123,14 +123,13 @@ export default function TemplesMap({
 							l0.39,0l0.92,0.64l1.71,1.51l0.36,0.3l1.15,0.4l0.48-0.02l0.43-0.2l0.46-0.49l0.51-1.08l0.37-0.47l0.55-0.52l0.48-0.02l0.39,0
 							l1.88,0.61l0.32,0.12l0.54,0.64l0.31,0.89l0.01,0.86l-0.09,0.41l-1.12,3.73L180.76,56l-0.19,0.82l-0.1,0.79l0.11,0.45l0.47,0.75
 							l0.83,0.67l0.52,0.55l0.4,0.87l0.49,0.46l0.84,0.28l1.15,0.78l2.08,1.04l2.29,0.7l1.31,0.65l1.45,0.42L194.73,66.5L194.73,66.5z"
-          />
-        </g>
-        <g id="ayutthaya" aria-label="พระนครศรีอยุธยา" onClick={handleOnSelect}>
-          <path
-            className={`${
-              selected.ayutthaya ? "fill-primary" : "fill-gray-200"
-            } hover:cursor-pointer transition ease-in-out duration-200`}
-            d="M62.36,123.71l-0.6,6.3l0.3,1.66l0.27,0.32l1.4,0.63l0.54,0.64l0.8,1.35l0.7,0.51l0.52,0.16
+        />
+        <Path
+          id="ayutthaya"
+          label="พระนครศรีอยุธยา"
+          onclick={handleOnSelect}
+          selected={selected}
+          draw="M62.36,123.71l-0.6,6.3l0.3,1.66l0.27,0.32l1.4,0.63l0.54,0.64l0.8,1.35l0.7,0.51l0.52,0.16
 							l0.61,0.14l0.77,0.01l0.93-0.13l1.87-0.64l0.87-0.4l0.68-0.36l2.29-1.7l0.87-0.79l0.66-0.45l0.78-0.38l0.45-0.11l1.75-0.32
 							l2.16-0.61l0.84-0.11l1.43-0.05l0.61,0.14l0.34,0.21l0.22,0.52l0.27,0.71l0.28,1.95l0.01,0.86l-0.44,0.59l-0.66,0.45l-0.09,0.41
 							l0.27,0.71l1.64,2.01l0.33,0.59l0.07,0.27l0.01,4.04l0.11,0.45l0.29,0.8l0.51,0.94l0.39,1.64l0.31,0.5l0.27,0.32l2.51,1.23
@@ -144,14 +143,13 @@ export default function TemplesMap({
 							l0.27,0.32l0.34,0.21l0.36-0.09l1.14-0.47l0.64-0.15l1.16,0.01l1.22,0.28l0.36-0.09l0.41-0.29l2.15-2.25l-0.19-1.98l-2.33-8.1
 							l-0.29-0.8l-0.31-0.5l-0.36-0.3l-0.18-0.34l-0.11-0.45l0.19-0.82l0.3-0.75l-0.01-6.44l-0.4-3.27l-0.67-1.19l-0.1-1.61l1.4,0.63
 							l1.75-0.32l0.61,0.14l0.47,0.37l0.88,0.46l0.7,0.12L62.36,123.71L62.36,123.71z"
-          />
-        </g>
-        <g id="pattani" aria-label="ปัตตานี" onClick={handleOnSelect}>
-          <path
-            className={`${
-              selected.pattani ? "fill-primary" : "fill-gray-200"
-            } hover:cursor-pointer transition ease-in-out duration-200`}
-            d="M180.57,157.45l-0.23,0.25l-3.48,0.74l-0.57,0.04l-0.7-0.12l-1.01-1.01l-0.59-0.44l-0.38-0.78
+        />
+        <Path
+          id="pattani"
+          label="ปัตตานี"
+          onclick={handleOnSelect}
+          selected={selected}
+          draw="M180.57,157.45l-0.23,0.25l-3.48,0.74l-0.57,0.04l-0.7-0.12l-1.01-1.01l-0.59-0.44l-0.38-0.78
 							l-0.42-1.34l-0.25-0.23l-0.27-0.32l-0.41-0.09l-0.77-0.01l-0.39,0l-0.59-0.44l-0.41-0.09l-1.23,0.87l-1.09-0.12l-0.45,0.11
 							l-1.26,0.78l-0.32,0.27l-0.73,0.17l-0.34,0.18l-0.28,0.45l-0.35,0.95l0.09,0.36l0.22,0.52l1.02,0.62l0.63,0.23l0.82,0.19l0.65,0.32
 							l0.49,0.84l-0.2,2.36l-2.29,1.7l-1.12,0.56l-0.55,0.13l-0.59-0.05l-0.97-0.44l-0.54-0.25l-0.34-0.21l-1.08-1.28l-2.11-1.99
@@ -164,9 +162,23 @@ export default function TemplesMap({
 							l3.98-3.07l0.78-2.78l3.79-0.24l1.85,0.9l2.13,0.07l0.93,0.26l0.14-0.23l3.59-0.67l-1.43-1.96l-2.23-2.06l-7.89-1.19l2.92-1.86
 							l3.31-0.22l3.37,1.6l4.91,1.61l4.01,0.29l2.02,0l1.68-0.21l2.2-0.05l1.97,0.2l0.97,0.44l3.31,0.55l4.32,1.18l1.17,0.87l15.77,16.42
 							L180.57,157.45L180.57,157.45z"
-          />
-        </g>
+        />
       </svg>
     </div>
+  );
+}
+
+function Path({ id, label, onclick, selected, draw }: IPathProps) {
+  return (
+    <g id={id} aria-label={label} onClick={onclick}>
+      <path
+        className={`${
+          selected[id as keyof ITemplesSelectStateModel]
+            ? "fill-primary"
+            : "fill-gray-200"
+        } hover:cursor-pointer transition ease-in-out duration-200`}
+        d={draw}
+      />
+    </g>
   );
 }
