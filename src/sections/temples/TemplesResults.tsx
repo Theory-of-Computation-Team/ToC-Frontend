@@ -53,8 +53,9 @@ export default function TemplesResults({
           />
           ทั้งหมด
         </label>
-        {provinces.map((checkbox) => (
+        {provinces.map((checkbox, index) => (
           <CatagoryCheckbox
+            key={index}
             selected={selected}
             setSelected={setSelected}
             id={checkbox[0]}
@@ -71,6 +72,7 @@ export default function TemplesResults({
         <div className="">
           {Object.entries(results).map(([key, result], i) => (
             <TempleList
+              key={i}
               selected={selected}
               id={key}
               label={provinces[i][1]}
@@ -117,8 +119,10 @@ function TempleList({ selected, id, label, temples, count }: ITempleListProps) {
     <div className="">
       <h2 className="">{`${label} (${count.toString()})`}</h2>
       <div className="">
-        {(hidden ? temples.slice(0, 30) : temples).map((temple) => (
-          <p className="">{temple}</p>
+        {(hidden ? temples.slice(0, 30) : temples).map((temple, index) => (
+          <p key={index} className="">
+            {temple}
+          </p>
         ))}
       </div>
       <button onClick={() => setHidden(!hidden)} className="">
