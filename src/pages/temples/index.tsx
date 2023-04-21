@@ -21,7 +21,11 @@ export default function Temples(props: ITemplesResultsModel) {
       </Head>
 
       <div className="flex flex-col items-center pt-16">
-        <TemplesHeader />
+        <TemplesHeader
+          selected={selected}
+          setSelected={setSelected}
+          results={props}
+        />
         <TemplesMap selected={selected} setSelected={setSelected} />
         <TemplesResults
           selected={selected}
