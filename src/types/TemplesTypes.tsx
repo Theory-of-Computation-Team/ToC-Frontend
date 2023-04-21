@@ -8,6 +8,7 @@ export type ITemplesSelectStateModel = {
 };
 
 export type ITemplesResultsModel = {
+  filter(arg0: (item: any) => boolean): unknown;
   phayao: string[];
   prachinburi: string[];
   ayutthaya: string[];
@@ -46,4 +47,17 @@ export type ITempleListProps = {
   label: string;
   temples: string[];
   count: number;
+};
+
+//old code
+// export type ISearchBarProps = {
+//   searchText: string;
+//   setSearchText: React.Dispatch<React.SetStateAction<string>>;
+//   onSearch: (searchText: string) => void;
+// };
+
+export type ISearchEieiProps = {
+  searchQuery: string;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+  onSearch: (searchQuery: string) => void;
 };

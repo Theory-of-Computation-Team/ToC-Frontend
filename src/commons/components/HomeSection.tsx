@@ -1,5 +1,5 @@
+import React from "react";
 import { IHomeDetails } from "@/types/HomeType";
-import React, { useState } from "react";
 
 const colors = {
   prachinburi: "#539165",
