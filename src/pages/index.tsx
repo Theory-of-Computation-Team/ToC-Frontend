@@ -3,6 +3,7 @@ import Head from "next/head";
 import { HomeHeader } from "@/sections/home";
 import { HomeAbout } from "@/sections/home";
 import { HomeTemple } from "@/sections/home";
+import { RegexContent, RegexHeader } from "@/sections/regex";
 
 export default function Home() {
   return (
@@ -12,9 +13,11 @@ export default function Home() {
       </Head>
 
       <div>
-        <HomeHeader />
-        <HomeAbout />
-        <HomeTemple />
+        <RegexHeader/>
+        <RegexContent/>
+        {/* <HomeHeader /> */}
+        {/* <HomeAbout /> */}
+        {/* <HomeTemple /> */}
       </div>
     </>
   );
