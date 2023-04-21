@@ -41,9 +41,6 @@ export default function TemplesResults({
     ])
   );
 
-  // function handleSearch(searchText: string) {
-  //   setSearchQuery(searchText);
-  // }
   function handleSearch(searchText: string) {
     setSearchQuery(searchText);
   }

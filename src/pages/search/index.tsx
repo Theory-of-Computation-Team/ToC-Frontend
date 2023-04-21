@@ -8,7 +8,7 @@ import {
   ITemplesResultsProps,
   ITemplesSelectStateModel,
 } from "@/types/TemplesTypes";
-//import axios from "axios";
+import axios from "axios";
 
 export default function Learn(props: ITemplesResultsModel) {
   const [selected, setSelected] = useState<ITemplesSelectStateModel>({
@@ -29,21 +29,28 @@ export default function Learn(props: ITemplesResultsModel) {
   );
 }
 
-export async function getServerSideProps() {
-  const urls = [
-    "https://test-qdfa.onrender.com/temple/PrachinBuri",
-    "https://test-qdfa.onrender.com/temple/prayao",
-    "https://test-qdfa.onrender.com/temple/pattani",
-    "https://test-qdfa.onrender.com/temple/Ayutthaya",
-  ];
-
-  const promises = urls.map((url) => axios.get(url));
-  const responses = await Promise.all(promises);
-  const data = responses.map((res: { data: any }) => res.data);
+export async function getStaticProps() {
+  const phayaoRes = await fetch("https://test-qdfa.onrender.com/temple/prayao");
+  const phayao: string[] = await phayaoRes.json();
+  const prachinburiRes = await fetch(
+    "https://test-qdfa.onrender.com/temple/PrachinBuri"
+  );
+  const prachinburi: string[] = await prachinburiRes.json();
+  const ayutthayaRes = await fetch(
+    "https://test-qdfa.onrender.com/temple/Ayutthaya"
+  );
+  const ayutthaya: string[] = await ayutthayaRes.json();
+  const pattaniRes = await fetch(
+    "https://test-qdfa.onrender.com/temple/pattani"
+  );
+  const pattani: string[] = await pattaniRes.json();
 
   return {
     props: {
-      temples: data,
+      phayao: phayao,
+      prachinburi: prachinburi,
+      ayutthaya: ayutthaya,
+      pattani: pattani,
     },
   };
 }

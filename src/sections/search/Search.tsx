@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ITemplesResultsProps } from "@/types/TemplesTypes";
 import { SearchEiei, TempleList } from "../temples/TemplesResults";
+import { ISearch } from "@/types/SearchTypes";
 
 const Search = ({ selected, setSelected, results }: ITemplesResultsProps) => {
   const provinces = [
@@ -32,10 +33,9 @@ const Search = ({ selected, setSelected, results }: ITemplesResultsProps) => {
     ])
   );
 
-  console.log(results);
   return (
     <div id="search" className="w-full py-6 md:px-32">
-      <div className="container mx-auto flex flex-col items-start px-8 py-8 md:py-12 gap-4">
+      <div className="container mx-auto flex flex-col items-start px-8 py-4 md:py-12 gap-4">
         <h1 className="relative my-8 md:my-12 inline-block group font-bold text-xl md:text-3xl xl:text-4xl tracking-wide transition-all duration-300 ease-in-out">
           ค้นหาวัดทั้งหมด
           <span className="absolute left-0 -bottom-5 my-2 h-1 w-[30%] group-hover:w-full transition-all duration-500 ease-out bg-primary"></span>
@@ -44,25 +44,24 @@ const Search = ({ selected, setSelected, results }: ITemplesResultsProps) => {
           คุณสามารถค้นหารายชื่อวัดในจังหวัดปราจีนบุรี ปัตตานี พะเยา
           พระนครศรีอยุธยาได้{" "}
         </p>
-      </div>
-      <div className="flex flex-col items-center justify-center bg-pink-300">
-        <SearchEiei
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          onSearch={handleSearch}
-        />
-        <div className="bg-green-300">
-          <h1>wefwlon</h1>
-          {Object.entries(filteredResults).map(([key, result], i) => (
-            <TempleList
-              key={i}
-              selected={selected}
-              id={key}
-              label={provinces[i][1]}
-              temples={isStringArray(result) ? result : []}
-              count={isStringArray(result) ? result.length : 0}
-            />
-          ))}
+        <div className="flex flex-col items-start mt-4">
+          <SearchEiei
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            onSearch={handleSearch}
+          />
+          <div className="flex space-x-8 py-8">
+            {Object.entries(filteredResults).map(([key, result], i) => (
+              <TempleList
+                key={i}
+                selected={selected}
+                id={key}
+                label={provinces[i][1]}
+                temples={isStringArray(result) ? result : []}
+                count={isStringArray(result) ? result.length : 0}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
