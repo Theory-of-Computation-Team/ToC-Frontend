@@ -73,7 +73,7 @@ const TemplesHeader = ({
         setSelected={setSelected}
         temples={filteredResults}
       /> */}
-      <div className="">
+      {/* <div className="">
         {Object.entries(filteredResults).map(([key, result], i) => (
           <TempleList
             key={i}
@@ -84,7 +84,7 @@ const TemplesHeader = ({
             count={isStringArray(result) ? result.length : 0}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

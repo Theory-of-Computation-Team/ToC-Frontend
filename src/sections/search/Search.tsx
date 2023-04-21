@@ -42,7 +42,7 @@ const Search = ({ selected, setSelected, results }: ITemplesResultsProps) => {
         </h1>
         <p className="font-normal text-base md:text-lg xl:text-xl text-graycolor">
           คุณสามารถค้นหารายชื่อวัดในจังหวัดปราจีนบุรี ปัตตานี พะเยา
-          พระนครศรีอยุธยาได้{" "}
+          เเละพระนครศรีอยุธยาได้{" "}
         </p>
         <div className="flex flex-col items-start mt-4">
           <SearchEiei
