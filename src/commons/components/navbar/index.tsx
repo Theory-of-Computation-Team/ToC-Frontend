@@ -59,13 +59,13 @@ function Navbar() {
           >
             <BsGithub />
           </a>
-          <Link
+          {/* <Link
             href="/search"
             className="text-center cursor-pointer hover:text-secondary"
             replace
           >
             <BiSearch />
-          </Link>
+          </Link> */}
         </div>
         <div
           onClick={handleNav}
