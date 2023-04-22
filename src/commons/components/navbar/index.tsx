@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { BiSearch, BiHomeAlt } from "react-icons/bi";
+import { BiHomeAlt } from "react-icons/bi";
 import { BsGithub } from "react-icons/bs";
-import { RxHamburgerMenu } from "react-icons/Rx";
-import { RiCloseFill } from "react-icons/Ri";
-import { GiGreekTemple } from "react-icons/Gi";
-import { GrDocumentPdf } from "react-icons/Gr";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { RiCloseFill } from "react-icons/ri";
+import { GiGreekTemple } from "react-icons/gi";
+import { GrDocumentPdf } from "react-icons/gr";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,7 +15,7 @@ function Navbar() {
     setMenuOpen(!menuOpen);
   };
   return (
-    <div className="fixed z-20 w-full md:h-16 bg-white drop-shadow-sm border-b-1 border-[#D9D9D9]">
+    <div className="fixed z-20 w-full h-16 bg-white drop-shadow-sm border-b-1 border-[#D9D9D9]">
       <div className="flex justify-between items-center w-full h-full">
         <div className="flex items-center justify-center px-6 space-x-6">
           <div className="w-6 h-6 md:w-8 md:h-8">
