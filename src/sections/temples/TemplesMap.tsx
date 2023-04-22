@@ -30,7 +30,6 @@ export default function TemplesMap({
           y: y ? y + height / 2 + 1 : 0,
         },
       };
-      console.log(centeredTextLocation);
 
       let name = document.createElementNS("http://www.w3.org/2000/svg", "text");
       name.setAttribute(
@@ -68,7 +67,7 @@ export default function TemplesMap({
 
   return (
     <div className="hidden md:flex flex-col items-center">
-      <svg className="h-[95%] w-full" id="map" viewBox="0 0 200 200">
+      <svg className="w-full" id="map" viewBox="0 0 220 220">
         <Path
           id="phayao"
           label="พะเยา"

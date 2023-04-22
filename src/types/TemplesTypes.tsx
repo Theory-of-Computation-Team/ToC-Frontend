@@ -22,7 +22,7 @@ export type ITemplesMapProps = {
 export type ITemplesResultsProps = {
   selected: ITemplesSelectStateModel;
   setSelected: Dispatch<SetStateAction<ITemplesSelectStateModel>>;
-  results: ITemplesResultsModel;
+  results: ITemplesResultsModel
   searchQuery: string;
 };
 

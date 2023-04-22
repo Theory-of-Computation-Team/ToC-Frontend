@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Head from "next/head";
 import {
+  TemplesDownload,
   TemplesHeader,
   TemplesMap,
   TemplesResults,
@@ -20,6 +21,16 @@ export default function Temples(props: ITemplesResultsModel) {
     ayutthaya: true,
     pattani: true,
   });
+  const filteredResults = Object.fromEntries(
+    Object.entries(props).map(([key, value]) => [
+      key,
+      value
+        ? value.filter((temple) =>
+            temple.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+        : value,
+    ])
+  ) as ITemplesResultsModel;
 
   return (
     <div className="flex justify-center">
@@ -27,8 +38,11 @@ export default function Temples(props: ITemplesResultsModel) {
         <title>Temples Search | รายชื่อวัด</title>
       </Head>
 
-      <div className="pt-16 grid grid-cols-2">
-        <TemplesHeader />
+      <div className="overflow-hidden xl:w-[85%] h-[calc(100vh-2rem)] container pt-16 grid grid-cols-2 gap-x-10">
+        <div className="flex items-center gap-5">
+          <TemplesHeader />
+          <TemplesDownload results={filteredResults} />
+        </div>
         <TemplesSearch
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
@@ -37,7 +51,7 @@ export default function Temples(props: ITemplesResultsModel) {
         <TemplesResults
           selected={selected}
           setSelected={setSelected}
-          results={props}
+          results={filteredResults}
           searchQuery={searchQuery}
         />
       </div>
