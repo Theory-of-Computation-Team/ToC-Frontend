@@ -1,28 +1,28 @@
 import { Dispatch, MouseEventHandler, SetStateAction } from "react";
 
-export type ITemplesSelectStateModel = {
+export type IResultsSelectionModel = {
   phayao: boolean;
   prachinburi: boolean;
   ayutthaya: boolean;
   pattani: boolean;
 };
 
-export type ITemplesResultsModel = {
+export type IResultsModel = {
   phayao: string[];
   prachinburi: string[];
   ayutthaya: string[];
   pattani: string[];
 };
 
-export type ITemplesMapProps = {
-  selected: ITemplesSelectStateModel;
-  setSelected: Dispatch<SetStateAction<ITemplesSelectStateModel>>;
+export type IMapProps = {
+  selected: IResultsSelectionModel;
+  setSelected: Dispatch<SetStateAction<IResultsSelectionModel>>;
 };
 
 export type ITemplesResultsProps = {
-  selected: ITemplesSelectStateModel;
-  setSelected: Dispatch<SetStateAction<ITemplesSelectStateModel>>;
-  results: ITemplesResultsModel
+  selected: IResultsSelectionModel;
+  setSelected: Dispatch<SetStateAction<IResultsSelectionModel>>;
+  results: IResultsModel;
   searchQuery: string;
 };
 
@@ -30,19 +30,19 @@ export type IPathProps = {
   id: string;
   label: string;
   onclick: MouseEventHandler<SVGGElement>;
-  selected: ITemplesSelectStateModel;
+  selected: IResultsSelectionModel;
   draw: string;
 };
 
 export type ITemplesCheckboxProps = {
-  selected: ITemplesSelectStateModel;
-  setSelected: Dispatch<SetStateAction<ITemplesSelectStateModel>>;
+  selected: IResultsSelectionModel;
+  setSelected: Dispatch<SetStateAction<IResultsSelectionModel>>;
   id: string;
   label: string;
 };
 
 export type ITempleListProps = {
-  selected: ITemplesSelectStateModel;
+  selected: IResultsSelectionModel;
   id: string;
   label: string;
   temples: string[];

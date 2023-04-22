@@ -1,13 +1,14 @@
-import React from "react";
-import { ITemplesResultsModel } from "@/types/TemplesTypes";
-import { BsDownload } from "react-icons/Bs";
+import React, { ReactNode } from "react";
+import { IResultsModel } from "@/types/TemplesTypes";
 
-export default function TemplesDownload({
+export default function Download({
   results,
+  child,
 }: {
-  results: ITemplesResultsModel;
+  results: IResultsModel;
+  child: ReactNode;
 }) {
-  const templesToCSV = (results: ITemplesResultsModel) => {
+  const templesToCSV = (results: IResultsModel) => {
     const provinceInThai = {
       phayao: "พะเยา",
       prachinburi: "ปราจีนบุรี",
@@ -18,7 +19,7 @@ export default function TemplesDownload({
 
     Object.entries(results).map(([key, temples]) => {
       temples.map((temple) => {
-        csv.push([provinceInThai[key as keyof ITemplesResultsModel], temple]);
+        csv.push([provinceInThai[key as keyof IResultsModel], temple]);
       });
     });
 
@@ -33,14 +34,14 @@ export default function TemplesDownload({
 
   return (
     <a
-      className="w-Bst"
+      className="w-Bst hover:scale-125 transition-all duration-200"
       href={
         "data:text/csv;charset=utf-8,%EF%BB%BF" +
         encodeURI(templesToCSV(results))
       }
       download="วัดส์.csv"
     >
-      <BsDownload size="1.2rem" />
+      {child}
     </a>
   );
 }

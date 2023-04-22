@@ -1,14 +1,11 @@
 import React, { MouseEvent, useEffect } from "react";
 import {
   IPathProps,
-  ITemplesMapProps as ITemplesMapProps,
-  ITemplesSelectStateModel,
+  IMapProps as IMapProps,
+  IResultsSelectionModel,
 } from "@/types/TemplesTypes";
 
-export default function TemplesMap({
-  selected,
-  setSelected,
-}: ITemplesMapProps) {
+export default function TemplesMap({ selected, setSelected }: IMapProps) {
   useEffect(() => {
     document.querySelectorAll("g").forEach((province) => {
       let { x, y, width, height } = province.getBBox();
@@ -38,17 +35,15 @@ export default function TemplesMap({
       );
       name.setAttribute(
         "x",
-        (centeredTextLocation[province.id as keyof ITemplesSelectStateModel]
-          ? centeredTextLocation[province.id as keyof ITemplesSelectStateModel]
-              .x
+        (centeredTextLocation[province.id as keyof IResultsSelectionModel]
+          ? centeredTextLocation[province.id as keyof IResultsSelectionModel].x
           : 0
         ).toString()
       );
       name.setAttribute(
         "y",
-        (centeredTextLocation[province.id as keyof ITemplesSelectStateModel]
-          ? centeredTextLocation[province.id as keyof ITemplesSelectStateModel]
-              .y
+        (centeredTextLocation[province.id as keyof IResultsSelectionModel]
+          ? centeredTextLocation[province.id as keyof IResultsSelectionModel].y
           : 0
         ).toString()
       );
@@ -60,8 +55,8 @@ export default function TemplesMap({
   const handleOnSelect = (e: MouseEvent) => {
     e.preventDefault;
     const temp = { ...selected };
-    temp[e.currentTarget.id as keyof ITemplesSelectStateModel] =
-      !selected[e.currentTarget.id as keyof ITemplesSelectStateModel];
+    temp[e.currentTarget.id as keyof IResultsSelectionModel] =
+      !selected[e.currentTarget.id as keyof IResultsSelectionModel];
     setSelected(temp);
   };
 
@@ -181,8 +176,8 @@ function Path({ id, label, onclick, selected, draw }: IPathProps) {
     <g id={id} aria-label={label} onClick={onclick}>
       <path
         className={`${
-          selected[id as keyof ITemplesSelectStateModel]
-            ? "fill-secondary"
+          selected[id as keyof IResultsSelectionModel]
+            ? "fill-primary"
             : "fill-gray-200"
         } hover:cursor-pointer transition ease-in-out duration-200`}
         d={draw}
