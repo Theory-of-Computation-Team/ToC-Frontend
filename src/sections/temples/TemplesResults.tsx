@@ -10,6 +10,7 @@ export default function TemplesResults({
   selected,
   setSelected,
   results,
+  searchQuery
 }: ITemplesResultsProps) {
   const [all, setAll] = useState<boolean>(true);
   const provinces = [
@@ -18,9 +19,19 @@ export default function TemplesResults({
     ["ayutthaya", "พระนครศรีอยุธยา"],
     ["pattani", "ปัตตานี"],
   ];
+  const filteredResults = Object.fromEntries(
+    Object.entries(results).map(([key, value]) => [
+      key,
+      value
+        ? value.filter((temple) =>
+            temple.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+        : value,
+    ])
+  );
 
   return (
-    <div className="container mt-16">
+    <div className="h-[calc(100vh-12rem)] overflow-y-scroll">
       <div className="">
         <label className="">
           <input
@@ -67,10 +78,10 @@ export default function TemplesResults({
       !selected.pattani &&
       !selected.phayao &&
       !selected.prachinburi ? (
-        <div className="">เลือกจังหวัดที่ต้องการแสดงผล</div>
+        <div>เลือกจังหวัดที่ต้องการแสดงผล</div>
       ) : (
         <div className="">
-          {Object.entries(results).map(([key, result], i) => (
+          {Object.entries(filteredResults).map(([key, result], i) => (
             <TempleList
               key={i}
               selected={selected}
@@ -118,7 +129,7 @@ function TempleList({ selected, id, label, temples, count }: ITempleListProps) {
   return (
     <div className="">
       <h2 className="">{`${label} (${count.toString()})`}</h2>
-      <div className="">
+      <div className="grid grid-cols-3">
         {(hidden ? temples.slice(0, 30) : temples).map((temple, index) => (
           <p key={index} className="">
             {temple}

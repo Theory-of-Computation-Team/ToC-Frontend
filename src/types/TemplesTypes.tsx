@@ -14,7 +14,7 @@ export type ITemplesResultsModel = {
   pattani: string[];
 };
 
-export type ITemplesSelectStateProps = {
+export type ITemplesMapProps = {
   selected: ITemplesSelectStateModel;
   setSelected: Dispatch<SetStateAction<ITemplesSelectStateModel>>;
 };
@@ -23,6 +23,7 @@ export type ITemplesResultsProps = {
   selected: ITemplesSelectStateModel;
   setSelected: Dispatch<SetStateAction<ITemplesSelectStateModel>>;
   results: ITemplesResultsModel;
+  searchQuery: string;
 };
 
 export type IPathProps = {
@@ -46,4 +47,9 @@ export type ITempleListProps = {
   label: string;
   temples: string[];
   count: number;
+};
+
+export type ITempleSearchProps = {
+  searchQuery: string;
+  setSearchQuery: Dispatch<SetStateAction<string>>;
 };
