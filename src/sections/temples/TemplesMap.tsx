@@ -30,20 +30,29 @@ export default function TemplesMap({
           y: y ? y + height / 2 + 1 : 0,
         },
       };
-      let px = x
-        ? centeredTextLocation[province.id as keyof ITemplesSelectStateModel].x
-        : 0;
-      let py = y
-        ? centeredTextLocation[province.id as keyof ITemplesSelectStateModel].y
-        : 0;
-      let name = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      console.log(centeredTextLocation);
 
+      let name = document.createElementNS("http://www.w3.org/2000/svg", "text");
       name.setAttribute(
         "style",
         "text-anchor: middle; cursor: pointer; font-size: .4rem; font-weight: 300; fill: black;"
       );
-      name.setAttribute("x", px.toString());
-      name.setAttribute("y", py.toString());
+      name.setAttribute(
+        "x",
+        (centeredTextLocation[province.id as keyof ITemplesSelectStateModel]
+          ? centeredTextLocation[province.id as keyof ITemplesSelectStateModel]
+              .x
+          : 0
+        ).toString()
+      );
+      name.setAttribute(
+        "y",
+        (centeredTextLocation[province.id as keyof ITemplesSelectStateModel]
+          ? centeredTextLocation[province.id as keyof ITemplesSelectStateModel]
+              .y
+          : 0
+        ).toString()
+      );
       name.innerHTML = province.ariaLabel ? province.ariaLabel : "Select";
       province.append(name);
     });
