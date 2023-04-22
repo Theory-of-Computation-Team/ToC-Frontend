@@ -9,7 +9,7 @@
 * https://github.com/Theory-of-Computation-Team/ToC-Frontend
 
 ## Backend :
-* https://github.com/SiwakornJew/webScraper
+* https://github.com/SiwakornJew/webScraper/blob/master/getTemple.py
 
 ## Presentation :
 *
