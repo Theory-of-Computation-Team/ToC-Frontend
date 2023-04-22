@@ -183,7 +183,7 @@ function Path({ id, label, onclick, selected, draw }: IPathProps) {
       <path
         className={`${
           selected[id as keyof ITemplesSelectStateModel]
-            ? "fill-primary"
+            ? "fill-secondary"
             : "fill-gray-200"
         } hover:cursor-pointer transition ease-in-out duration-200`}
         d={draw}
