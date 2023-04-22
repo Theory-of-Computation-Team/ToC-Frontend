@@ -152,10 +152,10 @@ function TempleList({ selected, id, label, temples, count }: ITempleListProps) {
             {`(${count.toString()})`}
           </span>
         </h1>
-        <div className="border-[1px] border-[#565656] rounded-full flex-grow mx-4 "></div>
+        <div className="bg-[#565656] h-[1px] rounded-full flex-grow mx-4 "></div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 content-evenly gap-2">
+      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 content-evenly gap-2">
         {(hidden ? temples.slice(0, 20) : temples).map((temple, index) => (
           <p
             key={index}
