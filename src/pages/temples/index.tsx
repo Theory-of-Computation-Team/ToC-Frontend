@@ -33,7 +33,7 @@ export default function Temples(props: ITemplesResultsModel) {
   ) as ITemplesResultsModel;
 
   return (
-    <div className="flex justify-center">
+    <div className="">
       <Head>
         <title>Temples Search | รายชื่อวัด</title>
       </Head>
@@ -47,6 +47,7 @@ export default function Temples(props: ITemplesResultsModel) {
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
+
         <TemplesMap selected={selected} setSelected={setSelected} />
         <TemplesResults
           selected={selected}

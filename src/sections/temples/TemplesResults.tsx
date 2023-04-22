@@ -10,7 +10,7 @@ export default function TemplesResults({
   selected,
   setSelected,
   results,
-  searchQuery,
+  searchQuery
 }: ITemplesResultsProps) {
   const [all, setAll] = useState<boolean>(true);
   const provinces = [

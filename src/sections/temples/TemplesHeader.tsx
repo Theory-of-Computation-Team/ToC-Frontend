@@ -1,4 +1,5 @@
 import React from "react";
+import TemplesSearch from "./TemplesSearch";
 
 export default function TemplesHeader() {
   return (
