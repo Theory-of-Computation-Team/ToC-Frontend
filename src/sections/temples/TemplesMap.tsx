@@ -35,7 +35,7 @@ export default function TemplesMap({
       let name = document.createElementNS("http://www.w3.org/2000/svg", "text");
       name.setAttribute(
         "style",
-        "text-anchor: middle; cursor: pointer; font-size: .4rem; font-weight: 300; fill: black;"
+        "text-anchor: middle; cursor: pointer; font-size: .4rem; font-weight: 300; fill: white;"
       );
       name.setAttribute(
         "x",
@@ -183,7 +183,7 @@ function Path({ id, label, onclick, selected, draw }: IPathProps) {
       <path
         className={`${
           selected[id as keyof ITemplesSelectStateModel]
-            ? "fill-primary"
+            ? "fill-secondary"
             : "fill-gray-200"
         } hover:cursor-pointer transition ease-in-out duration-200`}
         d={draw}

@@ -22,12 +22,12 @@ export default function Temples(props: ITemplesResultsModel) {
   });
 
   return (
-    <div className="flex justify-center">
+    <div className="">
       <Head>
         <title>Temples Search | รายชื่อวัด</title>
       </Head>
 
-      <div className="pt-16 grid grid-cols-2">
+      <div className="container mx-auto px-6 md:px-20 py-16 md:pt-32 gap-x-12 grid grid-cols-1 md:grid-cols-2 justify-center items-center">
         <TemplesHeader />
         <TemplesSearch
           searchQuery={searchQuery}

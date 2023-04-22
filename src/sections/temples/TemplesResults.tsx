@@ -32,7 +32,7 @@ export default function TemplesResults({
 
   return (
     <div className="h-[calc(100vh-12rem)] overflow-y-scroll">
-      <div className="flex py-4 justify-between">
+      <div className="flex pt-4 justify-between overflow-auto space-x-2">
         <button
           className={`text-xs md:text-base text-center cursor-pointer py-1 px-4 rounded-[20px] border border-[#D9D9D9] hover:bg-[#F6C865] ${
             selected.ayutthaya &&
@@ -81,9 +81,11 @@ export default function TemplesResults({
       !selected.pattani &&
       !selected.phayao &&
       !selected.prachinburi ? (
-        <div>เลือกจังหวัดที่ต้องการแสดงผล</div>
+        <h2 className="text-lg md:text-2xl pt-4 md:pt-8">
+          เลือกจังหวัดที่ต้องการแสดงผล
+        </h2>
       ) : (
-        <div className="">
+        <div>
           {Object.entries(filteredResults).map(([key, result], i) => (
             <TempleList
               key={i}
@@ -133,21 +135,6 @@ function CatagoryCheckbox({
       />
       {label}
     </button>
-
-    // <label className="bg-green-300">
-    //   <input
-    //     type="checkbox"
-    //     className=""
-    //     checked={selected[id as keyof ITemplesSelectStateModel]}
-    //     onChange={() => {
-    //       const temp = { ...selected };
-    //       temp[id as keyof ITemplesSelectStateModel] =
-    //         !selected[id as keyof ITemplesSelectStateModel];
-    //       setSelected(temp);
-    //     }}
-    //   />
-    //   {label}
-    // </label>
   );
 }
 
@@ -157,18 +144,27 @@ function TempleList({ selected, id, label, temples, count }: ITempleListProps) {
   if (!selected[id as keyof ITemplesSelectStateModel]) return null;
 
   return (
-    <div className="flex flex-col items-start">
-      <div className="my-4 md:my-6">
-        <h2 className="font-semibold text-xl my-2">{`${label} (${count.toString()})`}</h2>
-        <div className="grid grid-cols-3 gap-4 w-[40vw]">
-          {(hidden ? temples.slice(0, 20) : temples).map((temple, index) => (
-            <p key={index} className="text-sm md:text-base">
-              {temple}
-            </p>
-          ))}
-        </div>
+    <div className="flex flex-col pt-2">
+      <div className="flex items-center">
+        <h1 className="font-semibold text-lg md:text-2xl py-4 tracking-wide">
+          {`${label} (${count.toString()})`}
+          <div className="h-1 bg-primary rounded-full flex-grow "></div>
+        </h1>
       </div>
-      <button onClick={() => setHidden(!hidden)} className="underline ">
+      {/* <h2 className="font-semibold text-lg md:text-2xl py-4">{`${label} (${count.toString()})`}</h2> */}
+      <div className="grid grid-cols-2 md:grid-cols-3 content-evenly gap-2">
+        {(hidden ? temples.slice(0, 20) : temples).map((temple, index) => (
+          <p
+            key={index}
+            className="text-sm md:text-base"
+            style={{ color: index % 2 === 0 ? "black" : "gray" }}
+          >
+            {temple}
+          </p>
+        ))}
+      </div>
+
+      <button onClick={() => setHidden(!hidden)} className="underline pt-4">
         {hidden ? "แสดงทั้งหมด" : "แสดงน้อยลง"}
       </button>
     </div>
