@@ -12,7 +12,7 @@ export default function TemplesSearch({
 
   return (
     <div className="flex justify-end items-center">
-      <div className="relative flex items-center justify-between w-[200px] md:w-[350px]">
+      <div className="relative flex items-center justify-between w-full md:w-[350px]">
         <input
           type="text"
           value={searchQuery}

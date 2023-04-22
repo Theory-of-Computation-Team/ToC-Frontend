@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   ITemplesResultsProps,
   ITemplesCheckboxProps,
-  ITemplesSelectStateModel,
+  IResultsSelectionModel,
   ITempleListProps,
 } from "@/types/TemplesTypes";
 
@@ -12,7 +12,6 @@ export default function TemplesResults({
   results,
   searchQuery,
 }: ITemplesResultsProps) {
-  const [all, setAll] = useState<boolean>(true);
   const provinces = [
     ["phayao", "พะเยา"],
     ["prachinburi", "ปราจีนบุรี"],
@@ -31,10 +30,10 @@ export default function TemplesResults({
   );
 
   return (
-    <div className="h-[calc(100vh-12rem)] overflow-y-scroll">
+    <div className="h-screen md:h-[80vh] overflow-y-scroll">
       <div className="flex pt-4 justify-between overflow-auto space-x-2">
         <button
-          className={`text-xs md:text-base text-center cursor-pointer py-1 px-4 rounded-[20px] border border-[#D9D9D9] hover:bg-[#F6C865] ${
+          className={`text-xs md:text-base text-center cursor-pointer py-1 px-4 rounded-[20px] border border-[#D9D9D9]  ${
             selected.ayutthaya &&
             selected.pattani &&
             selected.phayao &&
@@ -110,26 +109,26 @@ function CatagoryCheckbox({
 }: ITemplesCheckboxProps) {
   return (
     <button
-      className={`text-xs md:text-base text-center cursor-pointer py-1 px-4 rounded-2xl border border-[#D9D9D9] hover:bg-[#F6C865] ${
-        selected[id as keyof ITemplesSelectStateModel]
+      className={`text-xs md:text-base text-center cursor-pointer py-1 px-4 rounded-2xl border border-[#D9D9D9]  ${
+        selected[id as keyof IResultsSelectionModel]
           ? "bg-primary text-white"
           : "bg-white"
       }`}
       onClick={() => {
         const temp = { ...selected };
-        temp[id as keyof ITemplesSelectStateModel] =
-          !selected[id as keyof ITemplesSelectStateModel];
+        temp[id as keyof IResultsSelectionModel] =
+          !selected[id as keyof IResultsSelectionModel];
         setSelected(temp);
       }}
     >
       <input
         type="checkbox"
         className="hidden"
-        checked={selected[id as keyof ITemplesSelectStateModel]}
+        checked={selected[id as keyof IResultsSelectionModel]}
         onChange={() => {
           const temp = { ...selected };
-          temp[id as keyof ITemplesSelectStateModel] =
-            !selected[id as keyof ITemplesSelectStateModel];
+          temp[id as keyof IResultsSelectionModel] =
+            !selected[id as keyof IResultsSelectionModel];
           setSelected(temp);
         }}
       />
@@ -141,7 +140,7 @@ function CatagoryCheckbox({
 function TempleList({ selected, id, label, temples, count }: ITempleListProps) {
   const [hidden, setHidden] = useState<boolean>(true);
 
-  if (!selected[id as keyof ITemplesSelectStateModel]) return null;
+  if (!selected[id as keyof IResultsSelectionModel]) return null;
 
   return (
     <div className="flex flex-col pt-2">
@@ -156,20 +155,26 @@ function TempleList({ selected, id, label, temples, count }: ITempleListProps) {
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 content-evenly gap-2">
-        {(hidden ? temples.slice(0, 20) : temples).map((temple, index) => (
-          <p
-            key={index}
-            className="text-sm md:text-base"
-            style={{ color: index % 2 === 0 ? "black" : "#565656" }}
-          >
-            {temple}
-          </p>
-        ))}
+        {count === 0 ? (
+          <div className="">ไม่พบผลการค้นหา</div>
+        ) : (
+          (hidden ? temples.slice(0, 30) : temples).map((temple, index) => (
+            <p
+              key={index}
+              className="text-sm md:text-base"
+              style={{ color: index % 2 === 0 ? "black" : "#565656" }}
+            >
+              {temple}
+            </p>
+          ))
+        )}
       </div>
 
-      <button onClick={() => setHidden(!hidden)} className="underline pt-4">
-        {hidden ? "แสดงทั้งหมด" : "แสดงน้อยลง"}
-      </button>
+      {count <= 30 ? null : (
+        <button onClick={() => setHidden(!hidden)} className="underline pt-4">
+          {hidden ? "แสดงทั้งหมด" : "แสดงน้อยลง"}
+        </button>
+      )}
     </div>
   );
 }
