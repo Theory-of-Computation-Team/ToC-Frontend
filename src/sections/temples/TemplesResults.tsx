@@ -152,7 +152,7 @@ function TempleList({ selected, id, label, temples, count }: ITempleListProps) {
             {`(${count.toString()})`}
           </span>
         </h1>
-        <div className="border-2 border-[#D9D9D9] rounded-full flex-grow mx-4 "></div>
+        <div className="border-[1px] border-[#565656] rounded-full flex-grow mx-4 "></div>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 content-evenly gap-2">
@@ -160,7 +160,7 @@ function TempleList({ selected, id, label, temples, count }: ITempleListProps) {
           <p
             key={index}
             className="text-sm md:text-base"
-            style={{ color: index % 2 === 0 ? "black" : "gray" }}
+            style={{ color: index % 2 === 0 ? "black" : "#565656" }}
           >
             {temple}
           </p>
