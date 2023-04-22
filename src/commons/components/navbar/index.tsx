@@ -15,7 +15,7 @@ function Navbar() {
     setMenuOpen(!menuOpen);
   };
   return (
-    <div className="fixed z-20 w-full h-16 bg-white drop-shadow-sm border-b-1 border-[#D9D9D9]">
+    <div className="fixed z-20 w-full md:h-16 bg-white drop-shadow-sm border-b-1 border-[#D9D9D9]">
       <div className="flex justify-between items-center w-full h-full">
         <div className="flex items-center justify-center px-6 space-x-6">
           <div className="w-6 h-6 md:w-8 md:h-8">
@@ -78,7 +78,7 @@ function Navbar() {
         <div
           className={
             menuOpen
-              ? "fixed left-0 top-0 w-[65%] sm:hidden h-screen p-10 ease-in duration-500 bg-[#D9D9D9]"
+              ? "flex-grow fixed left-0 top-0 w-[65%] sm:hidden h-screen p-10 ease-in duration-500 bg-[#D9D9D9]"
               : "fixed left-[-100%] h-screen top-0 p-10 hover:ease-in duration-500"
           }
         >
