@@ -145,13 +145,16 @@ function TempleList({ selected, id, label, temples, count }: ITempleListProps) {
 
   return (
     <div className="flex flex-col pt-2">
-      <div className="flex items-center">
+      <div className="flex items-center gap-6">
         <h1 className="font-semibold text-lg md:text-2xl py-4 tracking-wide">
-          {`${label} (${count.toString()})`}
-          <div className="h-1 bg-primary rounded-full flex-grow "></div>
+          {`${label} `}
+          <span className="font-semibold text-lg md:text-2xl py-4 tracking-wide text-[#2D2929]">
+            {`(${count.toString()})`}
+          </span>
         </h1>
+        <div className="border-2 border-[#D9D9D9] rounded-full flex-grow mx-4 "></div>
       </div>
-      {/* <h2 className="font-semibold text-lg md:text-2xl py-4">{`${label} (${count.toString()})`}</h2> */}
+
       <div className="grid grid-cols-2 md:grid-cols-3 content-evenly gap-2">
         {(hidden ? temples.slice(0, 20) : temples).map((temple, index) => (
           <p
