@@ -33,6 +33,7 @@ export default function Temples(props: ITemplesResultsModel) {
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
+
         <TemplesMap selected={selected} setSelected={setSelected} />
         <TemplesResults
           selected={selected}
