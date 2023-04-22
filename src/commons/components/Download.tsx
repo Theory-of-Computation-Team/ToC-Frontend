@@ -34,7 +34,7 @@ export default function Download({
 
   return (
     <a
-      className="w-Bst hover:scale-125 transition-all duration-200"
+      className=" hover:scale-125 transition-all duration-200"
       href={
         "data:text/csv;charset=utf-8,%EF%BB%BF" +
         encodeURI(templesToCSV(results))
