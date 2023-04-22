@@ -8,7 +8,7 @@ const LearnRegex = () => {
           หลักการ Regular Expression
           <span className="absolute left-0 -bottom-5 my-2 h-1 w-[30%] group-hover:w-full transition-all duration-500 ease-out bg-primary"></span>
         </h1>
-        <div className="container mx-auto md:justify-around px-12 py-8 md:py-12 bg-slate-200 rounded-2xl">
+        <div className="container mx-auto md:justify-around px-12 py-8 md:py-12 bg-slate-200 rounded-[3.5rem]">
           <b className="text-xl">Regular Expression ที่นำมาประยุกต์ใช้</b>
           <div className="pl-8 py-6">
             <p>

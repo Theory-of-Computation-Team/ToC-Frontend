@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home | ยินดีต้อนรับเข้าสู่หน้าหลัก</title>
+        <title>Wath | ยินดีต้อนรับเข้าสู่วัดส์</title>
       </Head>
 
       <div>

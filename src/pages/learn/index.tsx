@@ -6,7 +6,9 @@ export default function Learn() {
   return (
     <>
       <Head>
-        <title>หลักการ Regular Expression</title>
+        <title>
+          Learn | เรียนรู้เกี่ยวกับ Regular Expression
+        </title>
       </Head>
 
       <LearnRegex />
