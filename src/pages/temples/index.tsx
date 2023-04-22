@@ -22,7 +22,7 @@ export default function Temples(props: ITemplesResultsModel) {
   });
 
   return (
-    <div className="">
+    <div>
       <Head>
         <title>Temples Search | รายชื่อวัด</title>
       </Head>
