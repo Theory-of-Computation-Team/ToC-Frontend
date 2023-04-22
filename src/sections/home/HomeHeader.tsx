@@ -8,7 +8,7 @@ const HomeHeader = () => {
     <div id="home-header" className="w-full py-6 md:py-28 md:px-32">
       <div className="container mx-auto flex flex-col md:flex-row md:justify-around px-8 py-8 md:py-12 gap-4">
         <div className="relative flex justify-center shrink-0 overflow-hidden px-2 py-8">
-          <div className="absolute flex justify-center items-center inset-0 top-0 left-0 z-0 w-60 md:w-[300px] lg:w-[350px] 2xl:w-[450px] ">
+          <div className="absolute flex justify-center items-center inset-0 top-0 left-10 md:left-0 z-0 w-60 md:w-[300px] lg:w-[350px] 2xl:w-[450px] ">
             <Image
               src="/assets/images/circle.png"
               alt="circle"
@@ -38,7 +38,9 @@ const HomeHeader = () => {
           </div>
 
           <Link href="/temples" className="btn-primary text-xl lg:text-2xl">
-            ดูรายชื่อวัดทั้งหมด<br />ใน 4 จังหวัด
+            ดูรายชื่อวัดทั้งหมด
+            <br />
+            ใน 4 จังหวัด
           </Link>
         </div>
       </div>
