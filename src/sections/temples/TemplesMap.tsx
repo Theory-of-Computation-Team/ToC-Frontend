@@ -1,14 +1,14 @@
 import React, { MouseEvent, useEffect } from "react";
 import {
   IPathProps,
-  ITemplesSelectStateProps,
+  ITemplesMapProps as ITemplesMapProps,
   ITemplesSelectStateModel,
 } from "@/types/TemplesTypes";
 
 export default function TemplesMap({
   selected,
   setSelected,
-}: ITemplesSelectStateProps) {
+}: ITemplesMapProps) {
   useEffect(() => {
     document.querySelectorAll("g").forEach((province) => {
       let { x, y, width, height } = province.getBBox();
@@ -30,7 +30,6 @@ export default function TemplesMap({
           y: y ? y + height / 2 + 1 : 0,
         },
       };
-
       let px = x
         ? centeredTextLocation[province.id as keyof ITemplesSelectStateModel].x
         : 0;
@@ -38,6 +37,7 @@ export default function TemplesMap({
         ? centeredTextLocation[province.id as keyof ITemplesSelectStateModel].y
         : 0;
       let name = document.createElementNS("http://www.w3.org/2000/svg", "text");
+
       name.setAttribute(
         "style",
         "text-anchor: middle; cursor: pointer; font-size: .4rem; font-weight: 300; fill: black;"
@@ -58,8 +58,8 @@ export default function TemplesMap({
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <svg className="h-[30rem] w-[30rem]" id="map" viewBox="0 0 200 200">
+    <div className="hidden md:flex flex-col items-center">
+      <svg className="h-[95%] w-full" id="map" viewBox="0 0 200 200">
         <Path
           id="phayao"
           label="พะเยา"
