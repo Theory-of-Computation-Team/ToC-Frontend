@@ -17,6 +17,11 @@ const HomeSection = ({
 }: IHomeDetails) => {
   const color = colors[province as keyof typeof colors];
 
+  const [isReadMore, setIsReadMore] = useState(true);
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore);
+  };
+
   return (
     <div
       className={`container mx-auto flex flex-col md:flex-row md:justify-around px-8 py-8 md:py-12 gap-4 ${className}`}
@@ -31,8 +36,14 @@ const HomeSection = ({
             ></span>
           </h1>
 
-          <p className="font-normal text-base md:text-lg xl:text-xl tracking-wide line-clamp-3 md:line-clamp-none">
-            {detail}
+          <p className="font-normal text-base md:text-lg xl:text-xl tracking-wide ">
+            {isReadMore ? detail.slice(0, 150) : detail}
+            <span
+              onClick={toggleReadMore}
+              className="pl-1 text-xs text-[#999999] inline-block md:hidden"
+            >
+              {isReadMore ? "...เเสดงทั้งหมด" : "เเสดงน้อยลง"}
+            </span>
           </p>
         </div>
       </div>
