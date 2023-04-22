@@ -50,22 +50,25 @@ function Navbar() {
             </Link>
           </div>
         </div>
-        <div className="hidden sm:flex items-end justify-center px-6 space-x-4">
+        <div className="hidden sm:flex items-center justify-end px-6 space-x-4">
           <a
-            href="https://github.com/Theory-of-Computation-Team"
-            target="_blank"
-            className="text-center cursor-pointer hover:text-secondary"
-            rel="noreferrer"
+            href="https://github.com/Theory-of-Computation-Team/ToC-Frontend"
+            className="group inline-flex gap-3 items-center cursor-pointer text-tertiary"
           >
-            <BsGithub />
+            <p className="hidden group-hover:block transition-all duration-200">
+              Frontend
+            </p>
+            <BsGithub className="hover:scale-125 duration-200" />
           </a>
-          {/* <Link
-            href="/search"
-            className="text-center cursor-pointer hover:text-secondary"
-            replace
+          <a
+            href="https://github.com/Theory-of-Computation-Team/ToC-Backend"
+            className="group inline-flex gap-3 items-center cursor-pointer text-secondary"
           >
-            <BiSearch />
-          </Link> */}
+            <p className="hidden group-hover:block transition-all duration-200">
+              Backend
+            </p>
+            <BsGithub className="hover:scale-125 duration-200" />
+          </a>
         </div>
         <div
           onClick={handleNav}
@@ -74,7 +77,6 @@ function Navbar() {
           <RxHamburgerMenu />
         </div>
 
-        {/* mobile navbar*/}
         <div
           className={
             menuOpen
@@ -114,22 +116,23 @@ function Navbar() {
               หลักการ Regular Expression
             </Link>
             <a
-              href="https://github.com/Theory-of-Computation-Team"
+              href="https://github.com/Theory-of-Computation-Team/ToC-Frontend"
               target="_blank"
               className="flex gap-4 text-base items-center text-graycolor capitalize hover:text-secondary"
               rel="noreferrer"
             >
               <BsGithub />
-              Github
+              Frontend
             </a>
-            {/* <Link
-              href="/search"
-              className="flex gap-2 text-sm items-center text-graycolor capitalize hover:text-secondary"
-              replace
+            <a
+              href="https://github.com/Theory-of-Computation-Team/ToC-Backend"
+              target="_blank"
+              className="flex gap-4 text-base items-center text-graycolor capitalize hover:text-secondary"
+              rel="noreferrer"
             >
-              <BiSearch />
-              ค้นหา
-            </Link> */}
+              <BsGithub />
+              Backend
+            </a>
           </div>
         </div>
       </div>

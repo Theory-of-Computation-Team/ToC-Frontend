@@ -33,7 +33,7 @@ export default function Temples(props: IResultsModel) {
   return (
     <div className="flex justify-center">
       <Head>
-        <title>Temples Search | รายชื่อวัด</title>
+        <title>Search | รายชื่อวัดและการค้นหา</title>
       </Head>
 
       <div className="container mx-auto px-6 md:px-20 py-16 md:pt-32 gap-x-12 grid grid-cols-1 md:grid-cols-2 justify-center items-center">

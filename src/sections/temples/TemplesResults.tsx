@@ -30,7 +30,7 @@ export default function TemplesResults({
   );
 
   return (
-    <div className="h-screen md:h-[80vh] overflow-y-scroll">
+    <div className="h-screen md:h-[80vh] md:overflow-y-scroll">
       <div className="flex pt-4 justify-between overflow-auto space-x-2">
         <button
           className={`text-xs md:text-base text-center cursor-pointer py-1 px-4 rounded-[20px] border border-[#D9D9D9]  ${
@@ -151,7 +151,7 @@ function TempleList({ selected, id, label, temples, count }: ITempleListProps) {
             {`(${count.toString()})`}
           </span>
         </h1>
-        <div className="border-[1px] border-[#565656] rounded-full flex-grow mx-4 "></div>
+        <div className="bg-black h-[.5px] flex-grow mx-4 "></div>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 content-evenly gap-2">
