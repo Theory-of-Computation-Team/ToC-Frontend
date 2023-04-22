@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import Download from "@/commons/components/Download";
+import Link from "next/link";
 
 const HomeHeader = () => {
   return (
@@ -34,9 +36,10 @@ const HomeHeader = () => {
               วัดส์
             </h1>
           </div>
-          <div className="btn-primary text-xl lg:text-2xl">
-            ดาวน์โหลด CSV <br /> รายชื่อวัดทั้งหมด
-          </div>
+
+          <Link href="/temples" className="btn-primary text-xl lg:text-2xl">
+            ดูรายชื่อวัดทั้งหมด<br />ใน 4 จังหวัด
+          </Link>
         </div>
       </div>
     </div>
