@@ -35,7 +35,7 @@ export default function TemplesMap({
       let name = document.createElementNS("http://www.w3.org/2000/svg", "text");
       name.setAttribute(
         "style",
-        "text-anchor: middle; cursor: pointer; font-size: .4rem; font-weight: 300; fill: white;"
+        "text-anchor: middle; cursor: pointer; font-size: .4rem; font-weight: 300; fill: black;"
       );
       name.setAttribute(
         "x",
