@@ -33,13 +33,13 @@ export default function TemplesResults({
     <div className="h-screen md:h-[80vh] md:overflow-y-scroll">
       <div className="flex pt-4 justify-between overflow-auto space-x-2">
         <button
-          className={`text-xs md:text-base text-center cursor-pointer py-1 px-4 rounded-[20px] border border-[#D9D9D9]  ${
+          className={`text-xs md:text-base text-center cursor-pointer py-1 px-4 rounded-[20px] border border-black  ${
             selected.ayutthaya &&
             selected.pattani &&
             selected.phayao &&
             selected.prachinburi
-              ? "bg-primary text-white"
-              : "text-black bg-white"
+              ? "bg-primary"
+              : "bg-white"
           }`}
           onClick={() => {
             if (
@@ -109,9 +109,9 @@ function CatagoryCheckbox({
 }: ITemplesCheckboxProps) {
   return (
     <button
-      className={`text-xs md:text-base text-center cursor-pointer py-1 px-4 rounded-2xl border border-[#D9D9D9]  ${
+      className={`text-xs md:text-base text-center cursor-pointer py-1 px-4 rounded-2xl border-[.5px] border-black  ${
         selected[id as keyof IResultsSelectionModel]
-          ? "bg-primary text-white"
+          ? "bg-primary"
           : "bg-white"
       }`}
       onClick={() => {
