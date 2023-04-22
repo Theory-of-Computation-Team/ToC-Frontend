@@ -6,11 +6,11 @@
 <br/>  💻 Output คือ แสดงรายชื่อวัดที่หน้าเวบแอพ และสามารถ export ชื่อวัดที่ได้ crawl มาได้ ณ ปัจจุบันเป็นไฟล์ csv ในรูปแบบหนึ่งชื่อต่อหนึ่งบรรทัด
 
 ## Frontend : 
-* https://github.com/Xbrain-project/Xbrain-Frontend
+* https://github.com/Theory-of-Computation-Team/ToC-Frontend
 
 ## Backend :
-* https://github.com/Xbrain-project/Xbrain-Backend
+* https://github.com/SiwakornJew/webScraper
 
 ## Presentation :
-* https://www.canva.com/design/DAFSsI1l2Bk/i1gcMO1X5XIgI7WuCi776A/view?utm_content=DAFSsI1l2Bk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+*
 
