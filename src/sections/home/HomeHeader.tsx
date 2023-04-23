@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import Download from "@/commons/components/Download";
 import Link from "next/link";
 
 const HomeHeader = () => {
