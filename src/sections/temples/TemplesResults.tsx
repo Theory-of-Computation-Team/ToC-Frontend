@@ -33,7 +33,7 @@ export default function TemplesResults({
     <div className="h-screen md:h-[80vh] md:overflow-y-scroll">
       <div className="flex pt-4 justify-between overflow-auto space-x-2">
         <button
-          className={`text-xs md:text-base text-center cursor-pointer py-1 px-4 rounded-[20px] border border-black  ${
+          className={`text-xs md:text-base text-center cursor-pointer py-1 px-4 rounded-2xl border border-black ${
             selected.ayutthaya &&
             selected.pattani &&
             selected.phayao &&
@@ -80,9 +80,9 @@ export default function TemplesResults({
       !selected.pattani &&
       !selected.phayao &&
       !selected.prachinburi ? (
-        <h2 className="text-lg md:text-2xl pt-4 md:pt-8">
+        <h1 className="text-lg md:text-2xl pt-4 md:pt-8">
           เลือกจังหวัดที่ต้องการแสดงผล
-        </h2>
+        </h1>
       ) : (
         <div>
           {Object.entries(filteredResults).map(([key, result], i) => (
@@ -109,10 +109,8 @@ function CatagoryCheckbox({
 }: ITemplesCheckboxProps) {
   return (
     <button
-      className={`text-xs md:text-base text-center cursor-pointer py-1 px-4 rounded-2xl border-[.5px] border-black  ${
-        selected[id as keyof IResultsSelectionModel]
-          ? "bg-primary"
-          : "bg-white"
+      className={`text-xs md:text-base text-center cursor-pointer py-1 px-4 rounded-2xl border border-black  ${
+        selected[id as keyof IResultsSelectionModel] ? "bg-primary" : "bg-white"
       }`}
       onClick={() => {
         const temp = { ...selected };
@@ -147,7 +145,7 @@ function TempleList({ selected, id, label, temples, count }: ITempleListProps) {
       <div className="flex items-center gap-6">
         <h1 className="font-semibold text-lg md:text-2xl py-4 tracking-wide">
           {`${label} `}
-          <span className="font-semibold text-lg md:text-2xl py-4 tracking-wide text-[#2D2929]">
+          <span className="font-semibold text-xl md:text-2xl py-4 tracking-wide text-[#2D2929]">
             {`(${count.toString()})`}
           </span>
         </h1>
@@ -156,12 +154,12 @@ function TempleList({ selected, id, label, temples, count }: ITempleListProps) {
 
       <div className="grid grid-cols-2 md:grid-cols-3 content-evenly gap-2">
         {count === 0 ? (
-          <div className="">ไม่พบผลการค้นหา</div>
+          <div className="text-base md:text-lg">ไม่พบผลการค้นหา</div>
         ) : (
           (hidden ? temples.slice(0, 30) : temples).map((temple, index) => (
             <p
               key={index}
-              className="text-sm md:text-base"
+              className="text-base md:text-lg"
               style={{ color: index % 2 === 0 ? "black" : "#565656" }}
             >
               {temple}
@@ -171,7 +169,10 @@ function TempleList({ selected, id, label, temples, count }: ITempleListProps) {
       </div>
 
       {count <= 30 ? null : (
-        <button onClick={() => setHidden(!hidden)} className="underline pt-4">
+        <button
+          onClick={() => setHidden(!hidden)}
+          className="underline pt-4 text-center text-base md:text-lg"
+        >
           {hidden ? "แสดงทั้งหมด" : "แสดงน้อยลง"}
         </button>
       )}
