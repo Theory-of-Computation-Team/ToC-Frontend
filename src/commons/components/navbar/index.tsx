@@ -95,6 +95,7 @@ function Navbar() {
               href="/"
               className="flex gap-4 text-base items-center text-graycolor capitalize hover:text-secondary"
               replace
+              onClick={handleNav}
             >
               <BiHomeAlt />
               หน้าหลัก
@@ -103,6 +104,7 @@ function Navbar() {
               href="/temples"
               className="flex gap-4 text-base items-center text-graycolor capitalize hover:text-secondary"
               replace
+              onClick={handleNav}
             >
               <GiGreekTemple />
               รายชื่อวัด
@@ -111,6 +113,7 @@ function Navbar() {
               href="/learn"
               className="flex gap-4 text-base text-graycolor capitalize hover:text-secondary"
               replace
+              onClick={handleNav}
             >
               <GrDocumentPdf />
               หลักการ Regular Expression
@@ -120,6 +123,7 @@ function Navbar() {
               target="_blank"
               className="flex gap-4 text-base items-center text-graycolor capitalize hover:text-secondary"
               rel="noreferrer"
+              onClick={handleNav}
             >
               <BsGithub />
               Frontend
@@ -129,6 +133,7 @@ function Navbar() {
               target="_blank"
               className="flex gap-4 text-base items-center text-graycolor capitalize hover:text-secondary"
               rel="noreferrer"
+              onClick={handleNav}
             >
               <BsGithub />
               Backend

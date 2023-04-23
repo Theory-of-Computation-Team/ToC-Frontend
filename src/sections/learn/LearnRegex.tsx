@@ -8,27 +8,29 @@ const LearnRegex = () => {
           หลักการ Regular Expression
           <span className="absolute left-0 -bottom-5 my-2 h-1 w-[30%] group-hover:w-full transition-all duration-500 ease-out bg-primary"></span>
         </h1>
-        <div className="container mx-auto md:justify-around px-12 py-8 md:py-12 bg-slate-200 rounded-[3.5rem]">
-          <b className="text-xl">Regular Expression ที่นำมาประยุกต์ใช้</b>
-          <div className="pl-8 py-6">
+        <div className="container mx-auto md:justify-around px-10 py-8 md:py-12 bg-slate-200 rounded-[3.5rem]">
+          <b className="text-lg md:text-xl">
+            Regular Expression ที่นำมาประยุกต์ใช้
+          </b>
+          <div className="pl-4 md:pl-8 py-6">
             <p>
               โดยได้เลือก Regular Expression มาประยุกต์ในการ Accept Language
               ที่ต้องการ ได้ดังนี้
             </p>
-            <div className="pl-8 py-4 pt-8">
+            <div className="pl-4 md:pl-8 py-4 pt-8">
               <span className="bg-slate-100 rounded-2xl px-2 py-1">
                 &#62;(.*?)&#60;
               </span>{" "}
               เป็นให้ Regular Expression Accept กับ Language
               ในการค้นหารายชื่อวัดที่อยู่ภายใน HTML Tag
             </div>
-            <div className="pl-8 py-4 pt-8">
+            <div className="pl-4 md:pl-8 py-4 pt-8">
               <span className="bg-slate-100 rounded-2xl px-2 py-1">(^วัด)</span>{" "}
               เป็นให้ Regular Expression Accept กับ Language
               ในการค้นหารายชื่อของวัดเพียงอย่างเดียว จากกลุ่มคำที่ได้จาก HTML
               Tag
             </div>
-            <div className="pl-8 py-4 pt-8">
+            <div className="pl-4 md:pl-8 py-4 pt-8">
               <span className="bg-slate-100 rounded-2xl px-2 py-1">
                 (?!วัดราษฏร์ใน)
               </span>{" "}
@@ -38,7 +40,7 @@ const LearnRegex = () => {
               <br></br>“วัดหลวงใน”, “วัดไทย”, “วัดหน้าพระเมรุ”
               และ“วัดราษฎร์ธรรม”
             </div>
-            <div className="pl-8 py-4 pt-8">
+            <div className="pl-4 md:pl-8 py-4 pt-8">
               <span className="bg-slate-100 rounded-2xl px-2 py-1">
                 \(&#91;^)&#93;*\)
               </span>{" "}
@@ -48,7 +50,7 @@ const LearnRegex = () => {
             </div>
           </div>
           <div className="mt-4">
-            <b className="text-xl py-8 ">
+            <b className="text-lg md:text-xl py-8 ">
               Regular Expression Code Implementation &apos;ปราจีนบุรี&apos;
             </b>
           </div>
@@ -165,7 +167,7 @@ const LearnRegex = () => {
             </div>
           </div>
           <div className="mt-8">
-            <b className="text-xl py-8 ">
+            <b className="text-lg md:text-xl py-8 ">
               Regular Expression Code Implementation &apos;ปัตตานี&apos;
             </b>
           </div>
@@ -255,7 +257,7 @@ const LearnRegex = () => {
             </div>
           </div>
           <div className="mt-8">
-            <b className="text-xl py-8 ">
+            <b className="text-lg md:text-xl py-8 ">
               Regular Expression Code Implementation &apos;อยุธยา&apos;
             </b>
           </div>
@@ -510,7 +512,7 @@ const LearnRegex = () => {
             </div>
           </div>
           <div className="mt-8">
-            <b className="text-xl py-8 ">
+            <b className="text-lg md:text-xl py-8 ">
               Regular Expression Code Implementation &apos;พะเยา&apos;
             </b>
           </div>

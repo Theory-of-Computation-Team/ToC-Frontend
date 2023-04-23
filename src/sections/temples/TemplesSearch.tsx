@@ -18,9 +18,9 @@ export default function TemplesSearch({
           value={searchQuery}
           onChange={handleSearch}
           placeholder="ค้นหารายชื่อวัด..."
-          className="w-full py-2 px-5 text-sm md:text-lg border-[1px] border-black rounded-full focus:border-secondary focus:ring-secondary focus:outline-none"
+          className="w-full py-2 px-5 text-base md:text-lg border border-black rounded-full focus:border-secondary focus:ring-secondary focus:outline-none"
         />
-        <BiSearch className="absolute inset-y-0 right-0 w-4 h-4 md:w-6 md:h-6 mx-4 my-auto text-[#999999] active:text-secondary" />
+        <BiSearch className="absolute inset-y-0 right-0 w-4 h-4 md:w-6 md:h-6 mx-4 my-auto text-[#999999] active:text-secondary focus:text-secondary" />
       </div>
     </div>
   );
