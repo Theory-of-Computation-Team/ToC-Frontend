@@ -42,6 +42,7 @@ export default function Temples(props: IResultsModel) {
           <Download
             results={filteredResults}
             child={<BsDownload className="text-secondary" size="1.2rem" />}
+            selected={selected}
           />
         </div>
         <TemplesSearch
