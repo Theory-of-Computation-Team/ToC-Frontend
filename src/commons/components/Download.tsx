@@ -39,28 +39,17 @@ export default function Download({
       .join("\n");
   };
 
-  const canDownload =
-    selected.phayao &&
-    selected.prachinburi &&
-    selected.ayutthaya &&
-    selected.pattani;
-
   return (
     <a
-      className={`w-Bst hover:scale-125 transition-all duration-200 ${
-        canDownload ? "" : "opacity-50 cursor-not-allowed"
-      }`}
+      className="w-Bst hover:scale-125 transition-all duration-200"
       href={
         "data:text/csv;charset=utf-8,%EF%BB%BF" +
         encodeURI(templesToCSV(results, selected))
       }
       download="วัดส์.csv"
       onClick={(e) => {
-        if (canDownload) {
+        if (!selected) {
           e.preventDefault();
-          {
-            child;
-          }
         }
       }}
     >
