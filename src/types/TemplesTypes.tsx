@@ -1,4 +1,4 @@
-import { Dispatch, MouseEventHandler, SetStateAction } from "react";
+import { Dispatch, MouseEventHandler, ReactNode, SetStateAction } from "react";
 
 export type IResultsSelectionModel = {
   phayao: boolean;
@@ -52,4 +52,10 @@ export type ITempleListProps = {
 export type ITempleSearchProps = {
   searchQuery: string;
   setSearchQuery: Dispatch<SetStateAction<string>>;
+};
+
+export type IDownloadProps = {
+  results: IResultsModel;
+  filteredResults: IResultsModel;
+  child: ReactNode;
 };
